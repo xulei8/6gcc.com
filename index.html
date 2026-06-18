@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>北京大旗德讯科技有限公司</title>
+                  <meta charset="UTF-8">
+                    <style>
+                            body{ text-align:center ;}
+                                  </style>
+                                    </head>
+                                         <body>
+
+                                          <h1>网站开发中 于12月上线</h1>
+                                          <br/><br/><br/>
+                                          <footer>
+                                          北京大旗德讯科技有限公司 联系电话:010-86399905 传真:010-86399905   <br/>
+                                          <a   href="http://www.daqid.com/show/180.html" target="_blank" >2022年10月30日，《第一届企昌资本座谈会》暨企昌创投基金启动仪式在北京诺德中心成功举行。</a>
+                                          <hr/>
+                                       
+                                          <hr/>
+                                          E-mail:xu@daqid.com
+大旗®️系统全国服务电话：400-666-2580
+中国 北京市东城区王府井西街9号，东方文化大厦R103
+                                          <hr>
+                                         
+                  <a href="https://beian.miit.gov.cn/" target="_blank"  >京ICP备15034210号-1</a>
+                  <div onclick="connectUSB()">test</div>
+         </footer>
+
+          </body>
+
+<script>
+
+async function connectUSB() {
+  try {
+    // 打开串口（浏览器会弹出选择设备框，用户选你的U盘）
+    const port = await navigator.serial.requestPort();
+    await port.open({ baudRate: 9600 });
+
+    // 读取数据
+    const reader = port.readable.getReader();
+    const { value } = await reader.read();
+
+    // 收到 U 盘发回的序列号
+    const serial = new TextDecoder().decode(value);
+    alert("U盘验证成功：" + serial);
+
+  } catch (err) {
+  console.log(err)
+    alert("未连接U盘或未授权");
+    console.error(err);
+  }
+}
+</script>
+
