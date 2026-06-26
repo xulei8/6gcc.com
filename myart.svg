@@ -1,0 +1,463 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <!-- 背景渐变 -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="60%" stop-color="#06101f"/>
+      <stop offset="100%" stop-color="#020812"/>
+    </radialGradient>
+
+    <!-- 太极阴阳渐变 -->
+    <radialGradient id="yangGrad" cx="35%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d0e4f7"/>
+    </radialGradient>
+    <radialGradient id="yinGrad" cx="65%" cy="62%" r="65%">
+      <stop offset="0%" stop-color="#111133"/>
+      <stop offset="100%" stop-color="#000011"/>
+    </radialGradient>
+
+    <!-- 发光效果 -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowStrong" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 网络节点发光 -->
+    <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 太极八卦 -->
+    <g id="taiji">
+      <!-- 外圈八卦环 -->
+      <circle cx="0" cy="0" r="155" fill="none" stroke="#1a3a5c" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- 太极主体 - 外圆 -->
+      <circle cx="0" cy="0" r="120" fill="url(#yangGrad)" opacity="0.95"/>
+      <circle cx="0" cy="0" r="120" fill="none" stroke="#2a5a8c" stroke-width="2" opacity="0.5"/>
+
+      <!-- S形分割线 -->
+      <path d="M0,-120 C60,-120 60,0 0,0 C-60,0 -60,120 0,120" fill="url(#yinGrad)"/>
+
+      <!-- 阴中阳眼 -->
+      <circle cx="0" cy="60" r="20" fill="url(#yangGrad)"/>
+      <!-- 阳中阴眼 -->
+      <circle cx="0" cy="-60" r="20" fill="url(#yinGrad)"/>
+
+      <!-- 阴阳鱼眼高光 -->
+      <circle cx="0" cy="-60" r="7" fill="#2a3a6a" opacity="0.8"/>
+      <circle cx="0" cy="60" r="7" fill="#c8ddf0" opacity="0.8"/>
+    </g>
+
+    <!-- 八卦单卦 -->
+    <g id="trigram">
+      <rect x="-2" y="-40" width="4" height="16" rx="1.5"/>
+      <rect x="-2" y="-22" width="4" height="16" rx="1.5"/>
+      <rect x="-2" y="-4" width="4" height="16" rx="1.5"/>
+    </g>
+    <g id="trigramBroken">
+      <rect x="-2" y="-40" width="4" height="16" rx="1.5"/>
+      <rect x="-2" y="-22" width="4" height="16" rx="1.5"/>
+      <rect x="-2" y="-4" width="4" height="16" rx="1.5"/>
+      <rect x="3" y="-4" width="4" height="16" rx="1.5" fill="#0a1628"/>
+    </g>
+
+    <!-- 神经网络链接渐变 -->
+    <linearGradient id="netGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.1"/>
+      <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <!-- 数据流渐变 -->
+    <linearGradient id="dataFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 自然山峦渐变 -->
+    <linearGradient id="mountain1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a3d2a" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#06101f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="mountain2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d4a33" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#06101f" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 二进制渐变 -->
+    <linearGradient id="binaryGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="600" fill="url(#bgGrad)"/>
+
+  <!-- 星点 -->
+  <g fill="#ffffff" opacity="0.3">
+    <circle cx="50" cy="40" r="1"/>
+    <circle cx="150" cy="80" r="0.8"/>
+    <circle cx="300" cy="30" r="1.2"/>
+    <circle cx="500" cy="60" r="0.7"/>
+    <circle cx="650" cy="45" r="1"/>
+    <circle cx="750" cy="90" r="0.9"/>
+    <circle cx="100" cy="150" r="0.6"/>
+    <circle cx="700" cy="130" r="1.1"/>
+    <circle cx="400" cy="20" r="0.8"/>
+    <circle cx="580" cy="100" r="0.5"/>
+    <circle cx="230" cy="120" r="0.7"/>
+    <circle cx="680" cy="200" r="0.6"/>
+    <circle cx="80" cy="250" r="0.9"/>
+    <circle cx="720" cy="280" r="0.7"/>
+    <circle cx="30" cy="350" r="0.5"/>
+    <circle cx="770" cy="380" r="0.8"/>
+  </g>
+
+  <!-- ========== 自然元素：远山 ========== -->
+  <g opacity="0.3">
+    <path d="M0,520 Q80,400 160,460 Q240,380 320,440 Q400,360 500,420 Q560,370 640,430 Q720,390 800,450 L800,600 L0,600 Z" fill="url(#mountain1)"/>
+    <path d="M0,550 Q100,470 200,510 Q300,450 400,490 Q500,440 600,500 Q700,460 800,520 L800,600 L0,600 Z" fill="url(#mountain2)"/>
+  </g>
+
+  <!-- ========== 自然元素：松树 ========== -->
+  <g opacity="0.25">
+    <!-- 左侧松树 -->
+    <rect x="55" y="430" width="4" height="40" fill="#2a5a3a"/>
+    <polygon points="57,400 30,445 84,445" fill="#0d4a33"/>
+    <polygon points="57,390 34,430 80,430" fill="#0d4a33"/>
+    <polygon points="57,380 38,415 76,415" fill="#0d4a33"/>
+
+    <!-- 右侧松树 -->
+    <rect x="725" y="440" width="3" height="35" fill="#2a5a3a"/>
+    <polygon points="727,415 705,450 749,450" fill="#0d4a33"/>
+    <polygon points="727,405 710,440 744,440" fill="#0d4a33"/>
+    <polygon points="727,395 714,430 740,430" fill="#0d4a33"/>
+  </g>
+
+  <!-- ========== 网络时代：底层数据流 + 二进制 ========== -->
+  <!-- 二进制代码背景 -->
+  <g font-family="'Courier New', monospace" font-size="11" fill="url(#binaryGrad)">
+    <text x="20" y="30" opacity="0.4">01010110 01101110 01110100 01100101 01110010</text>
+    <text x="320" y="55" opacity="0.3">01101110 01100101 01110100 00100000 01000001 01000111</text>
+    <text x="15" y="75" opacity="0.25">01000010 01101100 01101111 01100011 01101011 01100011 01101000 01100001 01101001 01101110</text>
+    <text x="480" y="95" opacity="0.2">01001101 01100101 01110100 01100001 01110110 01100101 01110010 01110011 01100101</text>
+  </g>
+
+  <!-- 连接节点的网络线条（底层） -->
+  <g stroke="#00e5ff" stroke-width="0.8" fill="none" opacity="0.15">
+    <!-- 左下方网络集群 -->
+    <path d="M60,480 L120,440 L180,470 L240,430"/>
+    <path d="M60,480 L180,470"/>
+    <path d="M120,440 L240,430"/>
+    <path d="M120,440 L180,470"/>
+    <path d="M240,430 L300,460"/>
+    <path d="M180,470 L300,460"/>
+
+    <!-- 右下方网络集群 -->
+    <path d="M560,450 L620,480 L680,440 L740,470"/>
+    <path d="M560,450 L680,440"/>
+    <path d="M620,480 L740,470"/>
+    <path d="M620,480 L680,440"/>
+    <path d="M500,460 L560,450"/>
+    <path d="M500,460 L620,480"/>
+  </g>
+
+  <!-- 网络节点 -->
+  <g fill="#00e5ff" opacity="0.3">
+    <circle cx="60" cy="480" r="2.5"/>
+    <circle cx="120" cy="440" r="2"/>
+    <circle cx="180" cy="470" r="2.5"/>
+    <circle cx="240" cy="430" r="2"/>
+    <circle cx="300" cy="460" r="2.5"/>
+    <circle cx="500" cy="460" r="2"/>
+    <circle cx="560" cy="450" r="2.5"/>
+    <circle cx="620" cy="480" r="2"/>
+    <circle cx="680" cy="440" r="2.5"/>
+    <circle cx="740" cy="470" r="2"/>
+  </g>
+
+  <!-- ========== AI神经网络：上层结构 ========== -->
+  <g opacity="0.4">
+    <!-- 神经网络层 - 左侧 -->
+    <g stroke="#00e5ff" stroke-width="0.6" stroke-opacity="0.3" fill="none">
+      <!-- 输入层到隐藏层1 -->
+      <line x1="120" y1="180" x2="200" y2="150"/>
+      <line x1="120" y1="180" x2="200" y2="180"/>
+      <line x1="120" y1="180" x2="200" y2="210"/>
+      <line x1="120" y1="220" x2="200" y2="150"/>
+      <line x1="120" y1="220" x2="200" y2="180"/>
+      <line x1="120" y1="220" x2="200" y2="210"/>
+      <line x1="120" y1="260" x2="200" y2="150"/>
+      <line x1="120" y1="260" x2="200" y2="180"/>
+      <line x1="120" y1="260" x2="200" y2="210"/>
+
+      <!-- 隐藏层1到隐藏层2 -->
+      <line x1="200" y1="150" x2="280" y2="160"/>
+      <line x1="200" y1="150" x2="280" y2="195"/>
+      <line x1="200" y1="150" x2="280" y2="230"/>
+      <line x1="200" y1="180" x2="280" y2="160"/>
+      <line x1="200" y1="180" x2="280" y2="195"/>
+      <line x1="200" y1="180" x2="280" y2="230"/>
+      <line x1="200" y1="210" x2="280" y2="160"/>
+      <line x1="200" y1="210" x2="280" y2="195"/>
+      <line x1="200" y1="210" x2="280" y2="230"/>
+
+      <!-- 隐藏层2到输出层 -->
+      <line x1="280" y1="160" x2="360" y2="180"/>
+      <line x1="280" y1="160" x2="360" y2="220"/>
+      <line x1="280" y1="195" x2="360" y2="180"/>
+      <line x1="280" y1="195" x2="360" y2="220"/>
+      <line x1="280" y1="230" x2="360" y2="180"/>
+      <line x1="280" y1="230" x2="360" y2="220"/>
+    </g>
+
+    <!-- 神经网络节点 -->
+    <g>
+      <!-- 输入层 -->
+      <circle cx="120" cy="180" r="5" fill="#00e5ff" opacity="0.6"/>
+      <circle cx="120" cy="220" r="5" fill="#00e5ff" opacity="0.6"/>
+      <circle cx="120" cy="260" r="5" fill="#00e5ff" opacity="0.6"/>
+      <!-- 隐藏层1 -->
+      <circle cx="200" cy="150" r="5" fill="#7c4dff" opacity="0.6"/>
+      <circle cx="200" cy="180" r="5" fill="#7c4dff" opacity="0.6"/>
+      <circle cx="200" cy="210" r="5" fill="#7c4dff" opacity="0.6"/>
+      <!-- 隐藏层2 -->
+      <circle cx="280" cy="160" r="5" fill="#7c4dff" opacity="0.6"/>
+      <circle cx="280" cy="195" r="5" fill="#7c4dff" opacity="0.6"/>
+      <circle cx="280" cy="230" r="5" fill="#7c4dff" opacity="0.6"/>
+      <!-- 输出层 -->
+      <circle cx="360" cy="180" r="5" fill="#ff4081" opacity="0.6"/>
+      <circle cx="360" cy="220" r="5" fill="#ff4081" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- AI神经网络 - 右侧 -->
+  <g opacity="0.35">
+    <g stroke="#00e5ff" stroke-width="0.6" stroke-opacity="0.25" fill="none">
+      <!-- 输入层到隐藏层 -->
+      <line x1="440" y1="180" x2="520" y2="150"/>
+      <line x1="440" y1="180" x2="520" y2="190"/>
+      <line x1="440" y1="180" x2="520" y2="230"/>
+      <line x1="440" y1="220" x2="520" y2="150"/>
+      <line x1="440" y1="220" x2="520" y2="190"/>
+      <line x1="440" y1="220" x2="520" y2="230"/>
+      <line x1="440" y1="260" x2="520" y2="150"/>
+      <line x1="440" y1="260" x2="520" y2="190"/>
+      <line x1="440" y1="260" x2="520" y2="230"/>
+      <!-- 隐藏层到输出层 -->
+      <line x1="520" y1="150" x2="600" y2="180"/>
+      <line x1="520" y1="150" x2="600" y2="230"/>
+      <line x1="520" y1="190" x2="600" y2="180"/>
+      <line x1="520" y1="190" x2="600" y2="230"/>
+      <line x1="520" y1="230" x2="600" y2="180"/>
+      <line x1="520" y1="230" x2="600" y2="230"/>
+    </g>
+    <g>
+      <circle cx="440" cy="180" r="4" fill="#00e5ff" opacity="0.5"/>
+      <circle cx="440" cy="220" r="4" fill="#00e5ff" opacity="0.5"/>
+      <circle cx="440" cy="260" r="4" fill="#00e5ff" opacity="0.5"/>
+      <circle cx="520" cy="150" r="4" fill="#7c4dff" opacity="0.5"/>
+      <circle cx="520" cy="190" r="4" fill="#7c4dff" opacity="0.5"/>
+      <circle cx="520" cy="230" r="4" fill="#7c4dff" opacity="0.5"/>
+      <circle cx="600" cy="180" r="4" fill="#ff4081" opacity="0.5"/>
+      <circle cx="600" cy="230" r="4" fill="#ff4081" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- ========== 数据流动线（从两侧流向太极） ========== -->
+  <g stroke="#00e5ff" fill="none" opacity="0.3">
+    <path d="M0,300 Q100,280 200,310 Q300,340 380,310" stroke-width="0.8" stroke-dasharray="4,6"/>
+    <path d="M800,280 Q700,260 600,290 Q500,320 420,290" stroke-width="0.8" stroke-dasharray="4,6"/>
+    <path d="M0,350 Q120,370 220,350 Q320,330 380,340" stroke-width="0.6" stroke-dasharray="3,5"/>
+    <path d="M800,320 Q680,340 580,320 Q480,300 420,320" stroke-width="0.6" stroke-dasharray="3,5"/>
+  </g>
+
+  <!-- 流动的数据粒子 -->
+  <g fill="#00e5ff" filter="url(#nodeGlow)" opacity="0.5">
+    <circle cx="90" cy="295" r="1.5">
+      <animate attributeName="cx" values="90;380" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.2" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="710" cy="275" r="1.5">
+      <animate attributeName="cx" values="710;420" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.2" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="345" r="1.2">
+      <animate attributeName="cx" values="50;385" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.1" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="750" cy="315" r="1.2">
+      <animate attributeName="cx" values="750;415" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.1" dur="5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- ========== 中央：太极八卦图 ========== -->
+  <g transform="translate(400, 280)">
+    <!-- 八卦环绕 -->
+    <g fill="#3a7abd" opacity="0.8" filter="url(#glow)">
+      <!-- 乾 ☰ 天 -->
+      <g transform="translate(0,-170)">
+        <use href="#trigram"/>
+      </g>
+      <!-- 兑 ☱ 泽 -->
+      <g transform="translate(120,-120) rotate(45)">
+        <use href="#trigramBroken"/>
+      </g>
+      <!-- 离 ☲ 火 -->
+      <g transform="translate(170,0) rotate(90)">
+        <use href="#trigram"/>
+        <circle cx="0" cy="-31" r="2" fill="#ff6b35"/>
+      </g>
+      <!-- 震 ☳ 雷 -->
+      <g transform="translate(120,120) rotate(135)">
+        <use href="#trigramBroken"/>
+      </g>
+      <!-- 坤 ☷ 地 -->
+      <g transform="translate(0,170) rotate(180)">
+        <use href="#trigramBroken"/>
+        <use href="#trigramBroken"/>
+      </g>
+      <!-- 艮 ☶ 山 -->
+      <g transform="translate(-120,120) rotate(225)">
+        <use href="#trigram"/>
+        <use href="#trigramBroken"/>
+      </g>
+      <!-- 坎 ☵ 水 -->
+      <g transform="translate(-170,0) rotate(270)">
+        <use href="#trigramBroken"/>
+        <circle cx="0" cy="-31" r="2" fill="#00e5ff"/>
+      </g>
+      <!-- 巽 ☴ 风 -->
+      <g transform="translate(-120,-120) rotate(315)">
+        <use href="#trigramBroken"/>
+        <use href="#trigram"/>
+      </g>
+    </g>
+
+    <!-- 八卦文字标注 -->
+    <g font-family="'SimSun', 'Noto Serif CJK SC', serif" font-size="11" fill="#5a9adf" opacity="0.7" text-anchor="middle">
+      <text x="0" y="-195">乾 天</text>
+      <text x="145" y="-145">兑 泽</text>
+      <text x="195" y="4">离 火</text>
+      <text x="145" y="150">震 雷</text>
+      <text x="0" y="200">坤 地</text>
+      <text x="-145" y="150">艮 山</text>
+      <text x="-195" y="4">坎 水</text>
+      <text x="-145" y="-145">巽 风</text>
+    </g>
+
+    <!-- 八卦环发光 -->
+    <circle cx="0" cy="0" r="140" fill="none" stroke="#00e5ff" stroke-width="0.5" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- 太极本体 -->
+    <use href="#taiji"/>
+
+    <!-- 太极发光 -->
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#00e5ff" stroke-width="1" opacity="0.2">
+      <animate attributeName="r" values="120;125;120" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="4s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- 中央连接点：太极核心发光 -->
+    <circle cx="0" cy="0" r="3" fill="#00e5ff" filter="url(#glowStrong)" opacity="0.8">
+      <animate attributeName="r" values="2;5;2" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- ========== 上部弧形科技光环 ========== -->
+  <g opacity="0.25">
+    <path d="M200,80 Q400,120 600,80" fill="none" stroke="#00e5ff" stroke-width="0.5" stroke-dasharray="2,4">
+      <animate attributeName="stroke-dashoffset" values="0;-30" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M230,65 Q400,100 570,65" fill="none" stroke="#7c4dff" stroke-width="0.3" stroke-dasharray="3,5">
+      <animate attributeName="stroke-dashoffset" values="0;-40" dur="3s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- 弧形上的节点 -->
+    <circle cx="280" cy="85" r="2" fill="#00e5ff">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="400" cy="105" r="2.5" fill="#7c4dff">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="520" cy="85" r="2" fill="#00e5ff">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- ========== AI文字标注 ========== -->
+  <g font-family="'Courier New', monospace" fill="#00e5ff" opacity="0.15" font-size="60" font-weight="bold"
+     letter-spacing="15">
+    <text x="30" y="560" opacity="0.12">NEURAL·NETWORK</text>
+  </g>
+  <g font-family="'Courier New', monospace" fill="#7c4dff" opacity="0.12" font-size="45" font-weight="bold"
+     letter-spacing="10" transform="rotate(-90, 760, 300)">
+    <text x="760" y="300">ARTIFICIAL·INTELLIGENCE</text>
+  </g>
+
+  <!-- 左上角AI标签 -->
+  <g transform="translate(30, 25)" opacity="0.5">
+    <rect x="0" y="0" width="50" height="20" rx="3" fill="none" stroke="#00e5ff" stroke-width="0.8"/>
+    <text x="25" y="14" font-family="'Courier New', monospace" font-size="10" fill="#00e5ff" text-anchor="middle">AI</text>
+  </g>
+
+  <!-- 右上角Web标签 -->
+  <g transform="translate(720, 25)" opacity="0.5">
+    <rect x="0" y="0" width="55" height="20" rx="3" fill="none" stroke="#7c4dff" stroke-width="0.8"/>
+    <text x="27" y="14" font-family="'Courier New', monospace" font-size="10" fill="#7c4dff" text-anchor="middle">WEB</text>
+  </g>
+
+  <!-- ========== 底部说明文字 ========== -->
+  <g font-family="'SimSun', 'Noto Serif CJK SC', 'Microsoft YaHei', serif" text-anchor="middle" opacity="0.5">
+    <text x="400" y="555" font-size="12" fill="#5a9adf">道生一 · 一生二 · 二生三 · 三生万物</text>
+    <text x="400" y="575" font-size="10" fill="#3a7abd">
+      <tspan>太 极 生 两 仪 · 两 仪 生 四 象 · 四 象 生 八 卦</tspan>
+    </text>
+  </g>
+
+  <!-- ========== AI数据聚焦线 ========== -->
+  <g stroke="#00e5ff" stroke-width="0.3" opacity="0.1">
+    <line x1="0" y1="530" x2="400" y2="280"/>
+    <line x1="800" y1="530" x2="400" y2="280"/>
+    <line x1="0" y1="450" x2="400" y2="280"/>
+    <line x1="800" y1="450" x2="400" y2="280"/>
+  </g>
+
+  <!-- 聚焦线动画 -->
+  <g opacity="0.08">
+    <line x1="0" y1="530" x2="400" y2="280" stroke="#00e5ff" stroke-width="0.5">
+      <animate attributeName="opacity" values="0;0.3;0" dur="5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="800" y1="530" x2="400" y2="280" stroke="#00e5ff" stroke-width="0.5">
+      <animate attributeName="opacity" values="0;0.3;0" dur="5s" begin="1.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="0" y1="450" x2="400" y2="280" stroke="#7c4dff" stroke-width="0.5">
+      <animate attributeName="opacity" values="0;0.2;0" dur="5s" begin="3s" repeatCount="indefinite"/>
+    </line>
+    <line x1="800" y1="450" x2="400" y2="280" stroke="#7c4dff" stroke-width="0.5">
+      <animate attributeName="opacity" values="0;0.2;0" dur="5s" begin="4s" repeatCount="indefinite"/>
+    </line>
+  </g>
+</svg>
