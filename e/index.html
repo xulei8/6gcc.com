@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Element Plus 组件测试</title>
+  <!-- ElementPlus 样式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-plus@2/dist/index.css">
+  <!-- Vue3 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <!-- ElementPlus UMD -->
+  <script src="https://cdn.jsdelivr.net/npm/element-plus@2/dist/index.full.min.js"></script>
+  <!-- ElementPlus 图标 (IIFE 格式) -->
+  <script src="https://cdn.jsdelivr.net/npm/@element-plus/icons-vue@2/dist/index.iife.min.js"></script>
+  <style>
+    body { background: #f5f7fa; margin: 0; padding: 20px; font-family: 'Helvetica Neue', sans-serif; }
+    .page-title { text-align: center; color: #303133; margin-bottom: 30px; font-size: 24px; }
+    .demo-section { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .demo-section h2 { margin-top: 0; font-size: 18px; color: #409eff; border-left: 4px solid #409eff; padding-left: 12px; }
+    .demo-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 12px 0; }
+    .demo-card { display: flex; flex-direction: column; gap: 12px; }
+    .inline-block { display: inline-block; margin-right: 12px; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1 class="page-title">🛠️ Element Plus 组件全面测试</h1>
+
+    <!-- ==================== 1. 按钮 ==================== -->
+    <div class="demo-section">
+      <h2>1. 按钮 Button</h2>
+      <div class="demo-row">
+        <el-button>默认</el-button>
+        <el-button type="primary">主要</el-button>
+        <el-button type="success">成功</el-button>
+        <el-button type="warning">警告</el-button>
+        <el-button type="danger">危险</el-button>
+        <el-button type="info">信息</el-button>
+      </div>
+      <div class="demo-row">
+        <el-button plain>朴素</el-button>
+        <el-button type="primary" plain>主要朴素</el-button>
+        <el-button type="success" plain>成功朴素</el-button>
+      </div>
+      <div class="demo-row">
+        <el-button round>圆角</el-button>
+        <el-button type="primary" round>主要圆角</el-button>
+        <el-button type="primary" :icon="Search" circle></el-button>
+        <el-button type="success" :icon="Check" circle></el-button>
+        <el-button type="danger" :icon="Delete" circle></el-button>
+      </div>
+      <div class="demo-row">
+        <el-button disabled>禁用</el-button>
+        <el-button type="primary" disabled>主要禁用</el-button>
+        <el-button type="primary" loading>加载中</el-button>
+      </div>
+    </div>
+
+    <!-- ==================== 2. 文字链接 ==================== -->
+    <div class="demo-section">
+      <h2>2. 文字链接 Link</h2>
+      <div class="demo-row">
+        <el-link href="https://element-plus.org" target="_blank">默认链接</el-link>
+        <el-link type="primary">主要链接</el-link>
+        <el-link type="success">成功链接</el-link>
+        <el-link type="warning">警告链接</el-link>
+        <el-link type="danger">危险链接</el-link>
+        <el-link :underline="false">无下划线</el-link>
+        <el-link disabled>禁用链接</el-link>
+      </div>
+    </div>
+
+    <!-- ==================== 3. 输入框 ==================== -->
+    <div class="demo-section">
+      <h2>3. 输入框 Input</h2>
+      <div class="demo-row">
+        <el-input v-model="inputVal" placeholder="基础输入框" style="width:220px"></el-input>
+        <el-input v-model="inputVal2" placeholder="带清除" clearable style="width:220px"></el-input>
+        <el-input v-model="inputVal3" placeholder="禁用状态" disabled style="width:220px"></el-input>
+        <el-input v-model="inputVal4" placeholder="密码" show-password style="width:220px"></el-input>
+      </div>
+      <div class="demo-row">
+        <el-input v-model="inputVal5" placeholder="文本域" type="textarea" :rows="3" style="width:400px"></el-input>
+      </div>
+      <div style="margin-top:8px;font-size:13px;color:#909399;">
+        输入值: {{ inputVal }}
+      </div>
+    </div>
+
+    <!-- ==================== 4. 数字输入框 ==================== -->
+    <div class="demo-section">
+      <h2>4. 数字输入框 InputNumber</h2>
+      <div class="demo-row">
+        <el-input-number v-model="numVal" :min="1" :max="100" label="数量"></el-input-number>
+        <el-input-number v-model="numVal2" :step="5" :min="0" :max="1000" label="步进5"></el-input-number>
+        <el-input-number v-model="numVal3" :precision="2" :step="0.5" :min="0" label="小数"></el-input-number>
+        <el-input-number v-model="numVal4" disabled label="禁用"></el-input-number>
+      </div>
+      <div style="margin-top:8px;font-size:13px;color:#909399;">
+        数量: {{ numVal }} | 步进: {{ numVal2 }} | 小数: {{ numVal3 }} | 禁用: {{ numVal4 }}
+      </div>
+    </div>
+
+    <!-- ==================== 5. 选择器 ==================== -->
+    <div class="demo-section">
+      <h2>5. 选择器 Select</h2>
+      <div class="demo-row">
+        <el-select v-model="selectVal" placeholder="请选择城市" style="width:180px">
+          <el-option label="北京" value="beijing"></el-option>
+          <el-option label="上海" value="shanghai"></el-option>
+          <el-option label="广州" value="guangzhou"></el-option>
+          <el-option label="深圳" value="shenzhen"></el-option>
+          <el-option label="杭州" value="hangzhou"></el-option>
+        </el-select>
+        <el-select v-model="selectMul" multiple collapse-tags placeholder="多选城市" style="width:240px">
+          <el-option label="北京" value="beijing"></el-option>
+          <el-option label="上海" value="shanghai"></el-option>
+          <el-option label="广州" value="guangzhou"></el-option>
+          <el-option label="深圳" value="shenzhen"></el-option>
+        </el-select>
+        <el-select v-model="selectVal2" placeholder="禁用选择器" disabled style="width:180px">
+          <el-option label="选项A" value="a"></el-option>
+        </el-select>
+      </div>
+      <div style="margin-top:8px;font-size:13px;color:#909399;">
+        单选: {{ selectVal }} | 多选: {{ JSON.stringify(selectMul) }}
+      </div>
+    </div>
+
+    <!-- ==================== 6. 单选框 / 复选框 ==================== -->
+    <div class="demo-section">
+      <h2>6. 单选框 Radio / 复选框 Checkbox</h2>
+      <div class="demo-row">
+        <span style="font-size:14px;color:#606266;margin-right:8px;">性别：</span>
+        <el-radio-group v-model="radioVal">
+          <el-radio value="male">男</el-radio>
+          <el-radio value="female">女</el-radio>
+          <el-radio value="other" disabled>其他（禁用）</el-radio>
+        </el-radio-group>
+      </div>
+      <div class="demo-row">
+        <span style="font-size:14px;color:#606266;margin-right:8px;">爱好：</span>
+        <el-checkbox-group v-model="checkVal">
+          <el-checkbox value="read" label="阅读"></el-checkbox>
+          <el-checkbox value="music" label="音乐"></el-checkbox>
+          <el-checkbox value="sport" label="运动"></el-checkbox>
+          <el-checkbox value="travel" label="旅行" disabled></el-checkbox>
+        </el-checkbox-group>
+      </div>
+      <div style="margin-top:8px;font-size:13px;color:#909399;">
+        单选值: {{ radioVal }} | 复选值: {{ JSON.stringify(checkVal) }}
+      </div>
+    </div>
+
+    <!-- ==================== 7. 开关 ==================== -->
+    <div class="demo-section">
+      <h2>7. 开关 Switch</h2>
+      <div class="demo-row">
+        <el-switch v-model="switchVal" active-text="开启" inactive-text="关闭"></el-switch>
+        <el-switch v-model="switchVal2" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+        <el-switch v-model="switchVal3" disabled></el-switch>
+        <span style="font-size:13px;color:#909399;margin-left:8px;">开关状态: {{ switchVal }} | {{ switchVal2 }}</span>
+      </div>
+    </div>
+
+    <!-- ==================== 8. 日期选择器 ==================== -->
+    <div class="demo-section">
+      <h2>8. 日期选择器 DatePicker</h2>
+      <div class="demo-row">
+        <el-date-picker v-model="dateVal" type="date" placeholder="选择日期" style="width:200px"></el-date-picker>
+        <el-date-picker v-model="dateRange" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" style="width:320px"></el-date-picker>
+        <el-date-picker v-model="dateTime" type="datetime" placeholder="选择日期时间" style="width:220px"></el-date-picker>
+      </div>
+      <div style="margin-top:8px;font-size:13px;color:#909399;">
+        日期: {{ dateVal }} | 范围: {{ JSON.stringify(dateRange) }}
+      </div>
+    </div>
+
+    <!-- ==================== 9. 评分 ==================== -->
+    <div class="demo-section">
+      <h2>9. 评分 Rate</h2>
+      <div class="demo-row">
+        <el-rate v-model="rateVal" show-text :texts="['很差', '较差', '一般', '较好', '很棒']"></el-rate>
+        <el-rate v-model="rateVal2" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :icons="[StarFilled, StarFilled, StarFilled]" :void-icon="Star" show-score score-template="{value} 分"></el-rate>
+      </div>
+      <div style="margin-top:8px;font-size:13px;color:#909399;">评分1: {{ rateVal }} | 评分2: {{ rateVal2 }}</div>
+    </div>
+
+    <!-- ==================== 10. 进度条 ==================== -->
+    <div class="demo-section">
+      <h2>10. 进度条 Progress</h2>
+      <div class="demo-card">
+        <el-progress :percentage="20" :stroke-width="12"></el-progress>
+        <el-progress :percentage="50" status="success" :stroke-width="14"></el-progress>
+        <el-progress :percentage="70" status="warning" :stroke-width="16"></el-progress>
+        <el-progress :percentage="90" status="exception" :stroke-width="12"></el-progress>
+        <el-progress :percentage="50" :stroke-width="18" text-inside></el-progress>
+        <el-progress :percentage="40" type="circle" :width="80"></el-progress>
+        <el-progress :percentage="80" type="dashboard" :width="100" color="#409eff"></el-progress>
+      </div>
+    </div>
+
+    <!-- ==================== 11. 标签 / 徽标 ==================== -->
+    <div class="demo-section">
+      <h2>11. 标签 Tag / 徽标 Badge</h2>
+      <div class="demo-row">
+        <el-tag>默认标签</el-tag>
+        <el-tag type="success">成功标签</el-tag>
+        <el-tag type="info">信息标签</el-tag>
+        <el-tag type="warning">警告标签</el-tag>
+        <el-tag type="danger">危险标签</el-tag>
+      </div>
+      <div class="demo-row">
+        <el-tag closable @close="onTagClose">可关闭</el-tag>
+        <el-tag hit effect="dark">深色</el-tag>
+        <el-tag effect="plain">边框</el-tag>
+        <el-tag round>圆角标签</el-tag>
+      </div>
+      <div class="demo-row">
+        <el-badge :value="12" class="inline-block">
+          <el-button size="small">评论</el-button>
+        </el-badge>
+        <el-badge :value="3" type="warning" class="inline-block">
+          <el-button size="small">回复</el-button>
+        </el-badge>
+        <el-badge :value="99" :max="99" class="inline-block">
+          <el-button size="small">消息</el-button>
+        </el-badge>
+        <el-badge is-dot class="inline-block">
+          <el-button size="small">红点</el-button>
+        </el-badge>
+      </div>
+    </div>
+
+    <!-- ==================== 12. 警告 / 提示 ==================== -->
+    <div class="demo-section">
+      <h2>12. 警告 Alert</h2>
+      <el-alert title="成功提示文案" type="success" show-icon closable style="margin-bottom:10px"></el-alert>
+      <el-alert title="消息提示文案" type="info" show-icon closable style="margin-bottom:10px"></el-alert>
+      <el-alert title="警告提示文案" type="warning" show-icon closable style="margin-bottom:10px"></el-alert>
+      <el-alert title="错误提示文案" type="error" show-icon closable style="margin-bottom:10px"></el-alert>
+      <el-alert title="不带图标" type="info" :closable="false" description="这是一段详细描述文字" style="margin-bottom:10px"></el-alert>
+    </div>
+
+    <!-- ==================== 13. 卡片 ==================== -->
+    <div class="demo-section">
+      <h2>13. 卡片 Card</h2>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <el-card style="width:280px" shadow="hover">
+          <template #header>
+            <span>卡片标题</span>
+          </template>
+          <p style="margin:0;color:#606266;">这是一张卡片内容，鼠标悬浮有阴影效果。</p>
+        </el-card>
+        <el-card style="width:280px" shadow="always" body-style="{ padding: '16px' }">
+          <img src="https://via.placeholder.com/248x120/409eff/fff?text=卡片图片" style="width:100%;border-radius:4px;margin-bottom:10px">
+          <h4 style="margin:0 0 6px;">带图片的卡片</h4>
+          <p style="margin:0;font-size:13px;color:#909399;">卡片描述文字区域</p>
+        </el-card>
+        <el-card style="width:280px" shadow="never">
+          <template #header>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span>操作卡片</span>
+              <el-button type="primary" size="small" @click="onCardAction">操作</el-button>
+            </div>
+          </template>
+          <p style="margin:0;color:#606266;">点击右上角按钮触发事件。</p>
+        </el-card>
+      </div>
+    </div>
+
+    <!-- ==================== 14. 对话框 ==================== -->
+    <div class="demo-section">
+      <h2>14. 对话框 Dialog</h2>
+      <div class="demo-row">
+        <el-button type="primary" @click="dialogVisible = true">打开对话框</el-button>
+        <el-button @click="onMessage">消息提示</el-button>
+        <el-button type="success" @click="onNotify">通知</el-button>
+        <el-button type="warning" @click="onConfirm">确认框</el-button>
+      </div>
+      <el-dialog v-model="dialogVisible" title="Element Plus 对话框" width="500px">
+        <p style="color:#606266;">这是一个 Element Plus 的对话框组件测试。</p>
+        <p style="color:#606266;">可以在这里放置任何内容。</p>
+        <template #footer>
+          <el-button @click="dialogVisible = false">取消</el-button>
+          <el-button type="primary" @click="dialogVisible = false">确定</el-button>
+        </template>
+      </el-dialog>
+    </div>
+
+    <!-- ==================== 15. 表格 ==================== -->
+    <div class="demo-section">
+      <h2>15. 表格 Table</h2>
+      <el-table :data="tableData" border stripe style="width:100%" max-height="340"
+        highlight-current-row @current-change="onTableRowChange">
+        <el-table-column type="index" label="#" width="50" fixed></el-table-column>
+        <el-table-column prop="name" label="姓名" width="120" sortable></el-table-column>
+        <el-table-column prop="age" label="年龄" width="80" sortable></el-table-column>
+        <el-table-column prop="gender" label="性别" width="80"></el-table-column>
+        <el-table-column prop="department" label="部门" width="140"></el-table-column>
+        <el-table-column prop="position" label="职位" width="140"></el-table-column>
+        <el-table-column prop="city" label="城市" width="120"></el-table-column>
+        <el-table-column prop="email" label="邮箱" min-width="200"></el-table-column>
+        <el-table-column label="操作" width="180" fixed="right">
+          <template #default="scope">
+            <el-button type="primary" size="small" @click="onTableEdit(scope.row)">编辑</el-button>
+            <el-button type="danger" size="small" @click="onTableDelete(scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div style="margin-top:10px;font-size:13px;color:#909399;">
+        当前选中行: {{ currentRow ? currentRow.name + ' - ' + currentRow.position : '未选中' }}
+      </div>
+    </div>
+
+    <!-- ==================== 16. 分页 ==================== -->
+    <div class="demo-section">
+      <h2>16. 分页 Pagination</h2>
+      <el-pagination
+        v-model:current-page="pageNum"
+        v-model:page-size="pageSize"
+        :page-sizes="[10, 20, 50, 100]"
+        :total="total"
+        layout="total, sizes, prev, pager, next, jumper"
+        background
+        @size-change="onPageSizeChange"
+        @current-change="onPageChange"
+      ></el-pagination>
+    </div>
+
+    <!-- ==================== 17. 步骤条 ==================== -->
+    <div class="demo-section">
+      <h2>17. 步骤条 Steps</h2>
+      <el-steps :active="stepActive" align-center finish-status="success" style="margin-bottom:16px;">
+        <el-step title="步骤一" description="填写信息"></el-step>
+        <el-step title="步骤二" description="确认提交"></el-step>
+        <el-step title="步骤三" description="完成"></el-step>
+      </el-steps>
+      <div style="text-align:center;">
+        <el-button v-if="stepActive > 0" @click="stepActive--" style="margin-right:12px;">上一步</el-button>
+        <el-button v-if="stepActive < 3" type="primary" @click="stepActive++">下一步</el-button>
+        <span style="margin-left:12px;font-size:13px;color:#909399;">当前步骤: {{ stepActive }}</span>
+      </div>
+    </div>
+
+    <!-- ==================== 18. 折叠面板 ==================== -->
+    <div class="demo-section">
+      <h2>18. 折叠面板 Collapse</h2>
+      <el-collapse v-model="collapseActive" accordion>
+        <el-collapse-item title="🏆 Element Plus 简介" name="1">
+          <p style="color:#606266;margin:0;">Element Plus 是基于 Vue 3 的桌面端组件库，提供了丰富的 UI 组件。</p>
+        </el-collapse-item>
+        <el-collapse-item title="📦 安装方式" name="2">
+          <p style="color:#606266;margin:0;">npm install element-plus --save 或使用 CDN 方式加载。</p>
+        </el-collapse-item>
+        <el-collapse-item title="🚀 快速上手" name="3">
+          <p style="color:#606266;margin:0;">完整引入或按需引入均可。推荐使用完整引入以便快速开始开发。</p>
+        </el-collapse-item>
+      </el-collapse>
+    </div>
+
+    <!-- ==================== 19. 穿梭框 ==================== -->
+    <div class="demo-section">
+      <h2>19. 穿梭框 Transfer</h2>
+      <el-transfer
+        v-model="transferVal"
+        :data="transferData"
+        filterable
+        filter-placeholder="搜索"
+        :titles="['可选角色', '已选角色']"
+      ></el-transfer>
+    </div>
+
+    <!-- ==================== 20. 树形控件 ==================== -->
+    <div class="demo-section">
+      <h2>20. 树形控件 Tree</h2>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <el-tree :data="treeData" show-checkbox node-key="id" :default-expanded-keys="['1','2']"
+          :default-checked-keys="['1-1','2-1']" style="width:280px"></el-tree>
+        <el-tree :data="treeData" :props="{ children: 'children', label: 'label' }"
+          accordion draggable style="width:280px"></el-tree>
+      </div>
+    </div>
+
+    <!-- ==================== 21. 时间线 ==================== -->
+    <div class="demo-section">
+      <h2>21. 时间线 Timeline</h2>
+      <el-timeline>
+        <el-timeline-item timestamp="2026-07-10" placement="top" type="primary">
+          <el-card shadow="never" body-style="{ padding: '10px 16px' }">
+            <h4 style="margin:0 0 4px;">项目启动</h4>
+            <p style="margin:0;font-size:13px;color:#909399;">Element Plus 组件测试页面创建</p>
+          </el-card>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2026-07-09" placement="top" type="success">
+          <el-card shadow="never" body-style="{ padding: '10px 16px' }">
+            <h4 style="margin:0 0 4px;">功能完成</h4>
+            <p style="margin:0;font-size:13px;color:#909399;">完成表格、表单、对话框等功能测试</p>
+          </el-card>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2026-07-08" placement="top" type="warning">
+          <el-card shadow="never" body-style="{ padding: '10px 16px' }">
+            <h4 style="margin:0 0 4px;">环境搭建</h4>
+            <p style="margin:0;font-size:13px;color:#909399;">配置 Vue 3 + Element Plus 开发环境</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+    </div>
+
+    <!-- ==================== 22. 描述列表 ==================== -->
+    <div class="demo-section">
+      <h2>22. 描述列表 Descriptions</h2>
+      <el-descriptions title="用户信息" :column="3" border>
+        <el-descriptions-item label="用户名">zhangsan</el-descriptions-item>
+        <el-descriptions-item label="姓名">张三</el-descriptions-item>
+        <el-descriptions-item label="性别">男</el-descriptions-item>
+        <el-descriptions-item label="手机号">138****8888</el-descriptions-item>
+        <el-descriptions-item label="邮箱">zhangsan@example.com</el-descriptions-item>
+        <el-descriptions-item label="部门">技术研发部</el-descriptions-item>
+        <el-descriptions-item label="职位">高级前端工程师</el-descriptions-item>
+        <el-descriptions-item label="入职时间" :span="2">2024-03-15</el-descriptions-item>
+      </el-descriptions>
+    </div>
+
+    <!-- ==================== 23. 空状态 ==================== -->
+    <div class="demo-section">
+      <h2>23. 空状态 Empty</h2>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+        <el-empty description="暂无数据"></el-empty>
+        <el-empty image-size="100">
+          <template #image>
+            <el-icon :size="80" color="#c0c4cc"><icon-search /></el-icon>
+          </template>
+          <template #description>
+            <span>自定义空状态</span>
+          </template>
+          <el-button type="primary" size="small">刷新</el-button>
+        </el-empty>
+      </div>
+    </div>
+
+    <!-- ==================== 24. 骨架屏 ==================== -->
+    <div class="demo-section">
+      <h2>24. 骨架屏 Skeleton</h2>
+      <el-switch v-model="skeletonLoading" active-text="加载中" inactive-text="加载完成" style="margin-bottom:12px;"></el-switch>
+      <el-skeleton :loading="skeletonLoading" animated>
+        <template #default>
+          <div style="display:flex;gap:16px;">
+            <el-card style="width:240px">
+              <h4>内容标题</h4>
+              <p style="color:#909399;font-size:13px;">这是骨架屏加载完成后显示的内容。</p>
+            </el-card>
+            <el-card style="width:240px">
+              <h4>另一个卡片</h4>
+              <p style="color:#909399;font-size:13px;">Element Plus 骨架屏组件测试通过。</p>
+            </el-card>
+          </div>
+        </template>
+        <template #template>
+          <div style="display:flex;gap:16px;">
+            <el-skeleton-item variant="card" style="width:240px;height:100px;" />
+            <el-skeleton-item variant="card" style="width:240px;height:100px;" />
+          </div>
+        </template>
+      </el-skeleton>
+    </div>
+  </div>
+
+  <script>
+    const { createApp, ref, reactive, toRefs } = Vue
+
+    // 图标由 CDN 脚本自动注册为全局变量 ElementPlusIconsVue
+    // 无需额外声明，全局直接可用
+
+    const app = createApp({
+      setup() {
+        // ---------- input ----------
+        const inputVal = ref('')
+        const inputVal2 = ref('')
+        const inputVal3 = ref('禁用内容')
+        const inputVal4 = ref('')
+        const inputVal5 = ref('这是文本域内容...')
+
+        // ---------- input-number ----------
+        const numVal = ref(1)
+        const numVal2 = ref(50)
+        const numVal3 = ref(3.5)
+        const numVal4 = ref(8)
+
+        // ---------- select ----------
+        const selectVal = ref('')
+        const selectVal2 = ref('a')
+        const selectMul = ref([])
+
+        // ---------- radio / checkbox ----------
+        const radioVal = ref('male')
+        const checkVal = ref(['read', 'music'])
+
+        // ---------- switch ----------
+        const switchVal = ref(true)
+        const switchVal2 = ref(true)
+        const switchVal3 = ref(false)
+
+        // ---------- date ----------
+        const dateVal = ref('')
+        const dateRange = ref(null)
+        const dateTime = ref('')
+
+        // ---------- rate ----------
+        const rateVal = ref(4)
+        const rateVal2 = ref(3)
+
+        // ---------- dialog ----------
+        const dialogVisible = ref(false)
+
+        // ---------- pagination ----------
+        const pageNum = ref(1)
+        const pageSize = ref(20)
+        const total = ref(256)
+
+        // ---------- steps ----------
+        const stepActive = ref(1)
+
+        // ---------- collapse ----------
+        const collapseActive = ref('1')
+
+        // ---------- transfer ----------
+        const transferVal = ref(['1', '3'])
+        const transferData = [
+          { key: '1', label: '超级管理员' },
+          { key: '2', label: '管理员' },
+          { key: '3', label: '编辑' },
+          { key: '4', label: '作者' },
+          { key: '5', label: '读者' },
+        ]
+
+        // ---------- tree ----------
+        const treeData = [
+          {
+            id: '1', label: '前端技术', children: [
+              { id: '1-1', label: 'Vue 3' },
+              { id: '1-2', label: 'React' },
+              { id: '1-3', label: 'Angular' },
+            ]
+          },
+          {
+            id: '2', label: '后端技术', children: [
+              { id: '2-1', label: 'Node.js' },
+              { id: '2-2', label: 'Python' },
+              { id: '2-3', label: 'Go' },
+            ]
+          },
+          {
+            id: '3', label: '数据库', children: [
+              { id: '3-1', label: 'MySQL' },
+              { id: '3-2', label: 'MongoDB' },
+            ]
+          },
+        ]
+
+        // ---------- skeleton ----------
+        const skeletonLoading = ref(true)
+
+        // ---------- table ----------
+        const tableData = [
+          { name: '张三', age: 28, gender: '男', department: '技术部', position: '高级前端工程师', city: '北京', email: 'zhangsan@example.com' },
+          { name: '李四', age: 32, gender: '男', department: '技术部', position: '后端架构师', city: '上海', email: 'lisi@example.com' },
+          { name: '王五', age: 25, gender: '女', department: '产品部', position: '产品经理', city: '广州', email: 'wangwu@example.com' },
+          { name: '赵六', age: 30, gender: '男', department: '设计部', position: 'UI设计师', city: '深圳', email: 'zhaoliu@example.com' },
+          { name: '孙七', age: 27, gender: '女', department: '市场部', position: '市场运营', city: '杭州', email: 'sunqi@example.com' },
+          { name: '周八', age: 35, gender: '男', department: '技术部', position: '技术总监', city: '北京', email: 'zhouba@example.com' },
+          { name: '吴九', age: 24, gender: '女', department: '人事部', position: 'HR专员', city: '上海', email: 'wujiu@example.com' },
+          { name: '郑十', age: 29, gender: '男', department: '财务部', position: '财务分析师', city: '深圳', email: 'zhengshi@example.com' },
+        ]
+        const currentRow = ref(null)
+
+        // ---------- methods ----------
+        function onTagClose() {
+          ElementPlus.ElMessage('标签已关闭')
+        }
+        function onCardAction() {
+          ElementPlus.ElMessage({
+            message: '卡片操作按钮被点击',
+            type: 'success'
+          })
+        }
+        function onConfirm() {
+          ElementPlus.ElMessageBox.confirm('确认执行此操作吗？', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning',
+          }).then(() => {
+            ElementPlus.ElMessage({
+              type: 'success',
+              message: '操作已确认！',
+            })
+          }).catch(() => {
+            ElementPlus.ElMessage({
+              type: 'info',
+              message: '操作已取消',
+            })
+          })
+        }
+        function onMessage() {
+          ElementPlus.ElMessage('这是一条普通消息')
+        }
+        function onNotify() {
+          ElementPlus.ElNotification({
+            title: '通知',
+            message: '这是一条通知消息，来自 Element Plus',
+            type: 'success',
+            duration: 3000,
+          })
+        }
+        function onTableRowChange(row) {
+          currentRow.value = row
+        }
+        function onTableEdit(row) {
+          ElementPlus.ElMessage({
+            message: `编辑: ${row.name}`,
+            type: 'info'
+          })
+        }
+        function onTableDelete(row) {
+          ElementPlus.ElMessageBox.confirm(`确定删除 ${row.name} 吗？`, '提示', {
+            type: 'warning'
+          }).then(() => {
+            ElementPlus.ElMessage.success(`已删除 ${row.name}`)
+          })
+        }
+        function onPageSizeChange(val) {
+          ElementPlus.ElMessage.info(`每页条数改为: ${val}`)
+        }
+        function onPageChange(val) {
+          ElementPlus.ElMessage.info(`当前页: ${val}`)
+        }
+
+        // 全局注册所有图标
+        if (ElementPlusIconsVue) {
+          for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+            app.component(key, component)
+          }
+        }
+
+        return {
+          // icons
+          Search: ElementPlusIconsVue?.Search,
+          Check: ElementPlusIconsVue?.Check,
+          Delete: ElementPlusIconsVue?.Delete,
+          StarFilled: ElementPlusIconsVue?.StarFilled,
+          Star: ElementPlusIconsVue?.Star,
+          // data
+          inputVal, inputVal2, inputVal3, inputVal4, inputVal5,
+          numVal, numVal2, numVal3, numVal4,
+          selectVal, selectVal2, selectMul,
+          radioVal, checkVal,
+          switchVal, switchVal2, switchVal3,
+          dateVal, dateRange, dateTime,
+          rateVal, rateVal2,
+          dialogVisible,
+          pageNum, pageSize, total,
+          stepActive,
+          collapseActive,
+          transferVal, transferData,
+          treeData,
+          skeletonLoading,
+          tableData, currentRow,
+          // methods
+          onTagClose, onCardAction, onConfirm, onMessage, onNotify,
+          onTableRowChange, onTableEdit, onTableDelete,
+          onPageSizeChange, onPageChange,
+        }
+      }
+    })
+
+    app.use(ElementPlus)
+    app.mount('#app')
+  </script>
+</body>
+</html>
