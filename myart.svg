@@ -204,62 +204,122 @@
     <ellipse cx="735" cy="408" rx="18" ry="16" fill="#0e1a32"/>
   </g>
 
-  <!-- ===== 水面 ===== -->
-  <path d="M0,460 Q200,440 400,455 Q600,470 800,450 L800,600 L0,600 Z" fill="url(#waterGrad)"/>
+  <!-- ===== 水面（带动画波动的整个水面） ===== -->
+  <g>
+    <path fill="url(#waterGrad)">
+      <animate attributeName="d" values="
+        M0,460 Q100,435 200,455 Q300,445 400,460 Q500,445 600,460 Q700,440 800,455 L800,600 L0,600 Z;
+        M0,455 Q100,445 200,435 Q300,460 400,445 Q500,460 600,445 Q700,455 800,450 L800,600 L0,600 Z;
+        M0,460 Q100,440 200,450 Q300,448 400,455 Q500,450 600,455 Q700,445 800,450 L800,600 L0,600 Z;
+        M0,455 Q100,450 200,440 Q300,455 400,448 Q500,445 600,460 Q700,440 800,455 L800,600 L0,600 Z;
+        M0,460 Q100,435 200,455 Q300,445 400,460 Q500,445 600,460 Q700,440 800,455 L800,600 L0,600 Z"
+        dur="6s" repeatCount="indefinite"/>
+    </path>
+  </g>
 
   <!-- ===== 水面月光倒影 ===== -->
-  <ellipse cx="620" cy="500" rx="80" ry="15" fill="url(#reflection)" opacity="0.5">
-    <animate attributeName="rx" values="70;85;70" dur="4s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.4;0.6;0.4" dur="4s" repeatCount="indefinite"/>
+  <ellipse cx="620" cy="500" rx="80" ry="12" fill="url(#reflection)" opacity="0.5">
+    <animate attributeName="ry" values="8;18;8" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.35;0.65;0.35" dur="2.5s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;-3,2;0,0" dur="3s" repeatCount="indefinite"/>
   </ellipse>
-  <ellipse cx="620" cy="520" rx="50" ry="8" fill="url(#reflection)" opacity="0.3">
-    <animate attributeName="rx" values="45;55;45" dur="5s" repeatCount="indefinite"/>
+  <ellipse cx="620" cy="520" rx="55" ry="7" fill="url(#reflection)" opacity="0.3">
+    <animate attributeName="ry" values="5;12;5" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;4,-2;0,0" dur="4s" repeatCount="indefinite"/>
   </ellipse>
 
-  <!-- ===== 流水效果（多层动画河流线条） ===== -->
-  <!-- 流水层1：主水流 -->
+  <!-- ===== 流水效果（大幅波动 + 横向流动） ===== -->
   <g fill="none" stroke-linecap="round">
-    <path d="M0,475 Q100,465 200,478 Q300,490 400,480 Q500,470 600,485 Q700,498 800,485" stroke="url(#flowGrad)" stroke-width="3" opacity="0.6">
+
+    <!-- 流水层1：主波形 - 大幅上下摆动 + 横向漂移 -->
+    <path stroke="#5ad8ff" stroke-width="3" opacity="0.65">
       <animate attributeName="d" values="
-        M0,475 Q100,465 200,478 Q300,490 400,480 Q500,470 600,485 Q700,498 800,485;
-        M0,478 Q100,470 200,480 Q300,488 400,483 Q500,475 600,488 Q700,495 800,488;
-        M0,475 Q100,465 200,478 Q300,490 400,480 Q500,470 600,485 Q700,498 800,485"
+        M0,475 Q80,455 160,478 Q240,500 320,475 Q400,450 480,478 Q560,505 640,478 Q720,450 800,475;
+        M0,478 Q80,505 160,475 Q240,450 320,478 Q400,505 480,475 Q560,450 640,478 Q720,505 800,478;
+        M0,475 Q80,455 160,478 Q240,500 320,475 Q400,450 480,478 Q560,505 640,478 Q720,450 800,475"
+        dur="3.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- 流水层2 - 相位错开，大幅摆动 -->
+    <path stroke="#4ac0ff" stroke-width="2.5" opacity="0.55">
+      <animate attributeName="d" values="
+        M0,490 Q90,510 180,488 Q270,465 360,490 Q450,515 540,488 Q630,462 720,490 Q760,505 800,492;
+        M0,493 Q90,465 180,492 Q270,518 360,493 Q450,465 540,493 Q630,518 720,493 Q760,480 800,493;
+        M0,490 Q90,510 180,488 Q270,465 360,490 Q450,515 540,488 Q630,462 720,490 Q760,505 800,492"
         dur="4s" repeatCount="indefinite"/>
     </path>
 
-    <!-- 流水层2 -->
-    <path d="M0,495 Q120,485 240,498 Q360,510 480,498 Q600,486 720,500 Q760,506 800,500" stroke="url(#flowGrad)" stroke-width="2.5" opacity="0.5">
+    <!-- 流水层3 - 密集波形 -->
+    <path stroke="#7ad8ff" stroke-width="2" opacity="0.5">
       <animate attributeName="d" values="
-        M0,495 Q120,485 240,498 Q360,510 480,498 Q600,486 720,500 Q760,506 800,500;
-        M0,498 Q120,490 240,500 Q360,506 480,502 Q600,492 720,504 Q760,508 800,504;
-        M0,495 Q120,485 240,498 Q360,510 480,498 Q600,486 720,500 Q760,506 800,500"
+        M0,505 Q60,485 120,508 Q180,530 240,505 Q300,480 360,508 Q420,535 480,505 Q540,480 600,508 Q660,535 720,505 Q760,490 800,508;
+        M0,508 Q60,530 120,505 Q180,480 240,508 Q300,535 360,505 Q420,480 480,508 Q540,535 600,505 Q660,480 720,508 Q760,525 800,505;
+        M0,505 Q60,485 120,508 Q180,530 240,505 Q300,480 360,508 Q420,535 480,505 Q540,480 600,508 Q660,535 720,505 Q760,490 800,508"
+        dur="3s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- 流水层4：底部大浪 -->
+    <path stroke="#3a9acc" stroke-width="3" opacity="0.35">
+      <animate attributeName="d" values="
+        M0,535 Q120,515 240,538 Q360,560 480,535 Q600,510 720,538 Q760,550 800,535;
+        M0,538 Q120,560 240,535 Q360,510 480,538 Q600,565 720,535 Q760,520 800,538;
+        M0,535 Q120,515 240,538 Q360,560 480,535 Q600,510 720,538 Q760,550 800,535"
         dur="5s" repeatCount="indefinite"/>
     </path>
 
-    <!-- 流水层3 -->
-    <path d="M0,515 Q150,505 300,518 Q450,530 600,518 Q700,508 800,515" stroke="url(#flowGrad)" stroke-width="2" opacity="0.4">
+    <!-- ===== 横向流动线条（模拟水流方向） ===== -->
+    <!-- 流动线1 -->
+    <path d="M-50,478 Q50,470 150,480 Q250,490 350,478" stroke="#7ad8ff" stroke-width="1.5" opacity="0.35" stroke-dasharray="8,12">
+      <animate attributeName="stroke-dashoffset" values="0;-60" dur="1.5s" repeatCount="indefinite"/>
       <animate attributeName="d" values="
-        M0,515 Q150,505 300,518 Q450,530 600,518 Q700,508 800,515;
-        M0,518 Q150,510 300,520 Q450,526 600,522 Q700,514 800,518;
-        M0,515 Q150,505 300,518 Q450,530 600,518 Q700,508 800,515"
-        dur="6s" repeatCount="indefinite"/>
+        M-50,478 Q50,470 150,480 Q250,490 350,478;
+        M-50,480 Q50,473 150,482 Q250,488 350,480;
+        M-50,478 Q50,470 150,480 Q250,490 350,478"
+        dur="3s" repeatCount="indefinite"/>
     </path>
 
-    <!-- 流水层4：底部暗流 -->
-    <path d="M0,540 Q100,533 200,542 Q300,550 400,542 Q500,535 600,545 Q700,555 800,545" stroke="#3a8acc" stroke-width="3" opacity="0.25">
+    <!-- 流动线2 -->
+    <path d="M400,488 Q500,478 600,490 Q700,502 850,488" stroke="#7ad8ff" stroke-width="1.5" opacity="0.35" stroke-dasharray="6,14">
+      <animate attributeName="stroke-dashoffset" values="0;-50" dur="1.8s" repeatCount="indefinite"/>
       <animate attributeName="d" values="
-        M0,540 Q100,533 200,542 Q300,550 400,542 Q500,535 600,545 Q700,555 800,545;
-        M0,543 Q100,537 200,545 Q300,548 400,546 Q500,540 600,548 Q700,552 800,548;
-        M0,540 Q100,533 200,542 Q300,550 400,542 Q500,535 600,545 Q700,555 800,545"
-        dur="7s" repeatCount="indefinite"/>
+        M400,488 Q500,478 600,490 Q700,502 850,488;
+        M400,490 Q500,482 600,492 Q700,500 850,490;
+        M400,488 Q500,478 600,490 Q700,502 850,488"
+        dur="3.5s" repeatCount="indefinite"/>
     </path>
 
-    <!-- 流水高光闪烁 -->
-    <path d="M100,478 Q200,470 300,482" stroke="#7ad8ff" stroke-width="1.5" opacity="0.3">
-      <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2.5s" repeatCount="indefinite"/>
+    <!-- 流动线3 -->
+    <path d="M-50,510 Q80,498 210,512 Q340,526 470,510" stroke="#8ae0ff" stroke-width="1.2" opacity="0.3" stroke-dasharray="5,10">
+      <animate attributeName="stroke-dashoffset" values="0;-45" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="d" values="
+        M-50,510 Q80,498 210,512 Q340,526 470,510;
+        M-50,513 Q80,502 210,515 Q340,524 470,513;
+        M-50,510 Q80,498 210,512 Q340,526 470,510"
+        dur="4s" repeatCount="indefinite"/>
     </path>
-    <path d="M450,480 Q550,470 650,485" stroke="#7ad8ff" stroke-width="1.5" opacity="0.3">
-      <animate attributeName="opacity" values="0.1;0.35;0.1" dur="3s" repeatCount="indefinite" begin="1s"/>
+
+    <!-- 流动线4 -->
+    <path d="M350,520 Q480,508 610,522 Q740,536 850,520" stroke="#8ae0ff" stroke-width="1.2" opacity="0.3" stroke-dasharray="7,11">
+      <animate attributeName="stroke-dashoffset" values="0;-54" dur="1.6s" repeatCount="indefinite"/>
+      <animate attributeName="d" values="
+        M350,520 Q480,508 610,522 Q740,536 850,520;
+        M350,523 Q480,512 610,525 Q740,534 850,523;
+        M350,520 Q480,508 610,522 Q740,536 850,520"
+        dur="4.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- 浪花白沫（波峰高光） -->
+    <path d="M160,472 Q180,466 200,472" stroke="#c0f0ff" stroke-width="1.5" opacity="0.4" fill="none">
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M320,468 Q340,462 360,468" stroke="#c0f0ff" stroke-width="1.5" opacity="0.4" fill="none">
+      <animate attributeName="opacity" values="0.15;0.45;0.15" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    </path>
+    <path d="M480,472 Q500,465 520,472" stroke="#c0f0ff" stroke-width="1.5" opacity="0.35" fill="none">
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.2s" repeatCount="indefinite" begin="1s"/>
+    </path>
+    <path d="M640,470 Q660,463 680,470" stroke="#c0f0ff" stroke-width="1.5" opacity="0.35" fill="none">
+      <animate attributeName="opacity" values="0.15;0.4;0.15" dur="1.9s" repeatCount="indefinite" begin="0.8s"/>
     </path>
   </g>
 
