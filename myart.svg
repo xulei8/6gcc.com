@@ -1,48 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="400" height="280">
   <defs>
-    <!-- 夜空渐变 -->
+    <!-- 鲜艳夜空渐变 -->
     <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0e2a"/>
-      <stop offset="40%" stop-color="#141846"/>
-      <stop offset="70%" stop-color="#1a2a5a"/>
-      <stop offset="100%" stop-color="#2a3a6a"/>
+      <stop offset="0%" stop-color="#1b0b3f"/>
+      <stop offset="35%" stop-color="#3b1a6e"/>
+      <stop offset="65%" stop-color="#5c2a8a"/>
+      <stop offset="100%" stop-color="#7a3a9a"/>
     </linearGradient>
 
-    <!-- 水面渐变 -->
+    <!-- 鲜艳水面渐变 -->
     <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1a4a7a" stop-opacity="0.8"/>
-      <stop offset="50%" stop-color="#0e3a6a" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#062a50" stop-opacity="1"/>
+      <stop offset="0%" stop-color="#2a8ae0"/>
+      <stop offset="50%" stop-color="#1a5ad0"/>
+      <stop offset="100%" stop-color="#0e2a90"/>
     </linearGradient>
 
     <!-- 月亮光晕 -->
     <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#fffde8" stop-opacity="1"/>
-      <stop offset="60%" stop-color="#ffeebb" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#ffeebb" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#fff8d0" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#ffd94a" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ffb42a" stop-opacity="0"/>
     </radialGradient>
 
     <!-- 水面光反射 -->
     <linearGradient id="reflection" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#ffeebb" stop-opacity="0"/>
-      <stop offset="30%" stop-color="#ffeebb" stop-opacity="0.3"/>
-      <stop offset="50%" stop-color="#fffde8" stop-opacity="0.5"/>
-      <stop offset="70%" stop-color="#ffeebb" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#ffeebb" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#ffd94a" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#ffd94a" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#fff8d0" stop-opacity="0.6"/>
+      <stop offset="70%" stop-color="#ffd94a" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffd94a" stop-opacity="0"/>
     </linearGradient>
 
-    <!-- 流水渐变 -->
+    <!-- 鲜艳流水渐变 -->
     <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#4ac0ff" stop-opacity="0"/>
-      <stop offset="30%" stop-color="#4ac0ff" stop-opacity="0.45"/>
-      <stop offset="50%" stop-color="#7ad8ff" stop-opacity="0.6"/>
-      <stop offset="70%" stop-color="#4ac0ff" stop-opacity="0.45"/>
-      <stop offset="100%" stop-color="#4ac0ff" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#00e8ff" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#00e8ff" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#7affff" stop-opacity="0.7"/>
+      <stop offset="70%" stop-color="#00e8ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#00e8ff" stop-opacity="0"/>
     </linearGradient>
 
     <!-- 星芒滤镜 -->
     <filter id="starGlow" x="-200%" y="-200%" width="500%" height="500%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -50,393 +50,318 @@
     </filter>
 
     <!-- 发光滤镜 -->
-    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <!-- 月亮滤镜 -->
-    <filter id="moonFilter" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="15" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-
-    <!-- 星空闪烁动画 -->
+    <!-- 闪烁星 -->
     <g id="star1">
-      <circle cx="0" cy="0" r="1.5" fill="#ffffff">
+      <circle cx="0" cy="0" r="1.3" fill="#ffffff">
         <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
       </circle>
     </g>
     <g id="star2">
-      <circle cx="0" cy="0" r="2" fill="#ffffff">
-        <animate attributeName="opacity" values="0.2;0.9;0.2" dur="3.5s" repeatCount="indefinite"/>
+      <circle cx="0" cy="0" r="1.8" fill="#ffd94a" filter="url(#starGlow)">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite"/>
       </circle>
     </g>
     <g id="star3">
-      <circle cx="0" cy="0" r="1" fill="#ffffff" filter="url(#starGlow)">
+      <circle cx="0" cy="0" r="0.9" fill="#7affff">
         <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
       </circle>
     </g>
 
     <!-- 萤火虫 -->
     <g id="firefly">
-      <circle cx="0" cy="0" r="2" fill="#aaffaa" filter="url(#starGlow)">
-        <animate attributeName="opacity" values="0;0.8;0" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="r" values="1;3;1" dur="3s" repeatCount="indefinite"/>
+      <circle cx="0" cy="0" r="1.8" fill="#b4ff3a" filter="url(#starGlow)">
+        <animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="1;2.8;1" dur="2.5s" repeatCount="indefinite"/>
       </circle>
     </g>
 
-    <!-- 飘落花瓣 -->
+    <!-- 花瓣 -->
     <g id="petal">
-      <ellipse cx="0" cy="0" rx="4" ry="2.5" fill="#ffb7c5" opacity="0.7" transform="rotate(-15)"/>
+      <ellipse cx="0" cy="0" rx="3.5" ry="2.2" fill="#ff8ac0" opacity="0.8" transform="rotate(-15)"/>
     </g>
   </defs>
 
-  <!-- ===== 夜空背景 ===== -->
-  <rect width="800" height="600" fill="url(#skyGrad)"/>
+  <!-- ===== 鲜艳夜空背景 ===== -->
+  <rect width="400" height="280" fill="url(#skyGrad)"/>
 
-  <!-- ===== 极光效果 ===== -->
-  <g opacity="0.15">
-    <path d="M0,80 Q100,40 200,90 Q300,130 400,70 Q500,20 600,80 Q700,130 800,60 L800,0 L0,0 Z" fill="#7af0ff">
-      <animate attributeName="opacity" values="0.1;0.25;0.1" dur="8s" repeatCount="indefinite"/>
-      <animateTransform attributeName="transform" type="translate" values="0,0;20,-10;0,0" dur="12s" repeatCount="indefinite"/>
+  <!-- ===== 极光 ===== -->
+  <g opacity="0.2">
+    <path d="M0,40 Q60,15 130,45 Q200,70 270,35 Q330,10 400,40 L400,0 L0,0 Z" fill="#7affff">
+      <animate attributeName="opacity" values="0.12;0.3;0.12" dur="6s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0;12,-6;0,0" dur="9s" repeatCount="indefinite"/>
     </path>
-    <path d="M0,120 Q150,60 300,130 Q450,180 600,100 Q700,50 800,110 L800,0 L0,0 Z" fill="#a080ff">
-      <animate attributeName="opacity" values="0.08;0.2;0.08" dur="10s" repeatCount="indefinite"/>
-      <animateTransform attributeName="transform" type="translate" values="0,0;-15,-8;0,0" dur="15s" repeatCount="indefinite"/>
+    <path d="M0,60 Q80,30 160,65 Q240,90 320,50 Q360,35 400,55 L400,0 L0,0 Z" fill="#ff6ae0">
+      <animate attributeName="opacity" values="0.1;0.24;0.1" dur="8s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0;-10,-5;0,0" dur="11s" repeatCount="indefinite"/>
     </path>
   </g>
 
   <!-- ===== 星空 ===== -->
-  <!-- 大星（带星芒） -->
   <g filter="url(#starGlow)">
-    <use href="#star2" x="120" y="45"/>
-    <use href="#star2" x="350" y="80"/>
-    <use href="#star2" x="580" y="35"/>
-    <use href="#star2" x="680" y="95"/>
-    <use href="#star2" x="200" y="120"/>
-    <use href="#star2" x="500" y="55"/>
+    <use href="#star2" x="60" y="25"/>
+    <use href="#star2" x="180" y="40"/>
+    <use href="#star2" x="290" y="20"/>
+    <use href="#star2" x="110" y="60"/>
+    <use href="#star2" x="250" y="55"/>
+  </g>
+  <use href="#star1" x="30" y="45"/>
+  <use href="#star1" x="85" y="15"/>
+  <use href="#star1" x="140" y="35"/>
+  <use href="#star1" x="215" y="15"/>
+  <use href="#star1" x="330" y="40"/>
+  <use href="#star1" x="375" y="25"/>
+  <use href="#star1" x="25" y="80"/>
+  <use href="#star1" x="360" y="70"/>
+  <use href="#star1" x="160" y="70"/>
+  <use href="#star1" x="310" y="75"/>
+  <use href="#star3" x="50" y="35"/>
+  <use href="#star3" x="155" y="15"/>
+  <use href="#star3" x="265" y="35"/>
+  <use href="#star3" x="345" y="15"/>
+  <use href="#star3" x="95" y="80"/>
+  <use href="#star3" x="195" y="60"/>
+  <use href="#star3" x="380" y="55"/>
+
+  <!-- 静态小星 -->
+  <g fill="#ffffff" opacity="0.45">
+    <circle cx="15" cy="25" r="0.7"/>
+    <circle cx="70" cy="55" r="0.5"/>
+    <circle cx="125" cy="85" r="0.6"/>
+    <circle cx="230" cy="30" r="0.5"/>
+    <circle cx="280" cy="65" r="0.7"/>
+    <circle cx="355" cy="45" r="0.5"/>
+    <circle cx="390" cy="85" r="0.6"/>
   </g>
 
-  <!-- 中星 -->
-  <use href="#star1" x="60" y="90"/>
-  <use href="#star1" x="160" y="30"/>
-  <use href="#star1" x="250" y="65"/>
-  <use href="#star1" x="420" y="25"/>
-  <use href="#star1" x="480" y="90"/>
-  <use href="#star1" x="620" y="60"/>
-  <use href="#star1" x="750" y="40"/>
-  <use href="#star1" x="55" y="160"/>
-  <use href="#star1" x="720" y="150"/>
-  <use href="#star1" x="320" y="140"/>
-  <use href="#star1" x="600" y="130"/>
-
-  <!-- 小星（发光闪烁） -->
-  <use href="#star3" x="90" y="65"/>
-  <use href="#star3" x="300" y="35"/>
-  <use href="#star3" x="530" y="70"/>
-  <use href="#star3" x="450" y="45"/>
-  <use href="#star3" x="700" y="20"/>
-  <use href="#star3" x="180" y="95"/>
-  <use href="#star3" x="380" y="110"/>
-  <use href="#star3" x="650" y="100"/>
-  <use href="#star3" x="770" y="75"/>
-
-  <!-- 散布的小星点（静态） -->
-  <g fill="#ffffff" opacity="0.4">
-    <circle cx="30" cy="50" r="0.8"/>
-    <circle cx="140" cy="110" r="0.6"/>
-    <circle cx="230" cy="20" r="0.7"/>
-    <circle cx="280" cy="100" r="0.5"/>
-    <circle cx="360" cy="60" r="0.8"/>
-    <circle cx="410" cy="120" r="0.6"/>
-    <circle cx="490" cy="30" r="0.7"/>
-    <circle cx="550" cy="110" r="0.5"/>
-    <circle cx="640" cy="25" r="0.8"/>
-    <circle cx="670" cy="140" r="0.6"/>
-    <circle cx="760" cy="110" r="0.7"/>
-    <circle cx="100" cy="180" r="0.5"/>
-    <circle cx="780" cy="130" r="0.6"/>
-    <circle cx="45" cy="130" r="0.5"/>
-  </g>
-
-  <!-- ===== 月亮 ===== -->
-  <g transform="translate(620, 100)">
-    <!-- 月光晕 -->
-    <circle cx="0" cy="0" r="60" fill="url(#moonGlow)" filter="url(#moonFilter)">
-      <animate attributeName="r" values="55;65;55" dur="6s" repeatCount="indefinite"/>
+  <!-- ===== 金色月亮 ===== -->
+  <g transform="translate(315, 52)">
+    <circle cx="0" cy="0" r="32" fill="url(#moonGlow)" filter="url(#softGlow)">
+      <animate attributeName="r" values="28;36;28" dur="5s" repeatCount="indefinite"/>
     </circle>
-    <!-- 月轮 -->
-    <circle cx="0" cy="0" r="30" fill="#fffde8" filter="url(#softGlow)"/>
-    <!-- 月面纹理 -->
-    <circle cx="-8" cy="-5" r="5" fill="#f0e8c0" opacity="0.4"/>
-    <circle cx="10" cy="8" r="3" fill="#f0e8c0" opacity="0.3"/>
-    <circle cx="-5" cy="12" r="2.5" fill="#f0e8c0" opacity="0.25"/>
+    <circle cx="0" cy="0" r="16" fill="#fff8d0" filter="url(#softGlow)"/>
+    <circle cx="-4" cy="-3" r="2.6" fill="#ffd94a" opacity="0.5"/>
+    <circle cx="5" cy="4" r="1.6" fill="#ffd94a" opacity="0.4"/>
+    <circle cx="-2" cy="6" r="1.3" fill="#ffd94a" opacity="0.35"/>
   </g>
 
-  <!-- ===== 远山 ===== -->
+  <!-- ===== 远山（紫色调） ===== -->
+  <g opacity="0.5">
+    <path d="M0,205 Q40,170 75,190 Q110,165 150,185 Q190,160 230,182 Q270,168 310,185 Q350,172 400,195 L400,280 L0,280 Z" fill="#2a1060"/>
+    <path d="M0,220 Q50,195 100,212 Q150,190 200,210 Q260,192 320,212 Q360,200 400,215 L400,280 L0,280 Z" fill="#3a1870"/>
+  </g>
+
+  <!-- ===== 树影 ===== -->
   <g opacity="0.35">
-    <path d="M0,420 Q80,350 150,390 Q220,340 300,380 Q380,330 450,370 Q520,340 600,380 Q680,350 800,400 L800,600 L0,600 Z" fill="#0e1a3a"/>
-    <path d="M0,450 Q100,390 200,420 Q280,370 360,410 Q440,380 540,420 Q640,390 800,440 L800,600 L0,600 Z" fill="#121e42"/>
+    <path d="M50,225 Q53,205 56,190 Q59,205 62,225" fill="#1a0a4a"/>
+    <ellipse cx="56" cy="185" rx="22" ry="18" fill="#1a0a4a"/>
+    <ellipse cx="40" cy="192" rx="13" ry="10" fill="#1a0a4a"/>
+    <ellipse cx="74" cy="190" rx="11" ry="9" fill="#1a0a4a"/>
   </g>
-
-  <!-- ===== 月下树影（左侧） ===== -->
   <g opacity="0.3">
-    <!-- 大树干 -->
-    <path d="M100,460 Q105,420 110,390 Q115,420 120,460" fill="#1a2a3a"/>
-    <!-- 树冠 -->
-    <ellipse cx="110" cy="380" rx="40" ry="35" fill="#0e1a32"/>
-    <ellipse cx="90" cy="390" rx="25" ry="20" fill="#0e1a32"/>
-    <ellipse cx="135" cy="390" rx="20" ry="18" fill="#0e1a32"/>
+    <path d="M348,228 Q350,212 352,198 Q354,212 356,228" fill="#1a0a4a"/>
+    <ellipse cx="352" cy="194" rx="18" ry="15" fill="#1a0a4a"/>
+    <ellipse cx="340" cy="200" rx="10" ry="9" fill="#1a0a4a"/>
+    <ellipse cx="365" cy="198" rx="9" ry="8" fill="#1a0a4a"/>
   </g>
 
-  <!-- ===== 右侧树影 ===== -->
-  <g opacity="0.25">
-    <path d="M700,470 Q705,440 710,410 Q715,440 720,470" fill="#1a2a3a"/>
-    <ellipse cx="710" cy="400" rx="35" ry="30" fill="#0e1a32"/>
-    <ellipse cx="690" cy="410" rx="20" ry="18" fill="#0e1a32"/>
-    <ellipse cx="735" cy="408" rx="18" ry="16" fill="#0e1a32"/>
-  </g>
+  <!-- ===== 水面（整片波动） ===== -->
+  <path fill="url(#waterGrad)">
+    <animate attributeName="d" values="
+      M0,228 Q50,212 100,226 Q150,214 200,228 Q250,214 300,226 Q350,212 400,226 L400,280 L0,280 Z;
+      M0,224 Q50,230 100,216 Q150,228 200,216 Q250,228 300,218 Q350,228 400,222 L400,280 L0,280 Z;
+      M0,228 Q50,214 100,224 Q150,216 200,226 Q250,218 300,226 Q350,216 400,224 L400,280 L0,280 Z;
+      M0,224 Q50,220 100,214 Q150,226 200,218 Q250,214 300,226 Q350,220 400,224 L400,280 L0,280 Z;
+      M0,228 Q50,212 100,226 Q150,214 200,228 Q250,214 300,226 Q350,212 400,226 L400,280 L0,280 Z"
+      dur="5s" repeatCount="indefinite"/>
+  </path>
 
-  <!-- ===== 水面（带动画波动的整个水面） ===== -->
-  <g>
-    <path fill="url(#waterGrad)">
-      <animate attributeName="d" values="
-        M0,460 Q100,435 200,455 Q300,445 400,460 Q500,445 600,460 Q700,440 800,455 L800,600 L0,600 Z;
-        M0,455 Q100,445 200,435 Q300,460 400,445 Q500,460 600,445 Q700,455 800,450 L800,600 L0,600 Z;
-        M0,460 Q100,440 200,450 Q300,448 400,455 Q500,450 600,455 Q700,445 800,450 L800,600 L0,600 Z;
-        M0,455 Q100,450 200,440 Q300,455 400,448 Q500,445 600,460 Q700,440 800,455 L800,600 L0,600 Z;
-        M0,460 Q100,435 200,455 Q300,445 400,460 Q500,445 600,460 Q700,440 800,455 L800,600 L0,600 Z"
-        dur="6s" repeatCount="indefinite"/>
-    </path>
-  </g>
-
-  <!-- ===== 水面月光倒影 ===== -->
-  <ellipse cx="620" cy="500" rx="80" ry="12" fill="url(#reflection)" opacity="0.5">
-    <animate attributeName="ry" values="8;18;8" dur="2s" repeatCount="indefinite"/>
+  <!-- ===== 月光倒影 ===== -->
+  <ellipse cx="315" cy="242" rx="40" ry="6" fill="url(#reflection)" opacity="0.5">
+    <animate attributeName="ry" values="4;10;4" dur="2s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0.35;0.65;0.35" dur="2.5s" repeatCount="indefinite"/>
-    <animateTransform attributeName="transform" type="translate" values="0,0;-3,2;0,0" dur="3s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;-2,1;0,0" dur="3s" repeatCount="indefinite"/>
   </ellipse>
-  <ellipse cx="620" cy="520" rx="55" ry="7" fill="url(#reflection)" opacity="0.3">
-    <animate attributeName="ry" values="5;12;5" dur="3s" repeatCount="indefinite" begin="0.5s"/>
-    <animateTransform attributeName="transform" type="translate" values="0,0;4,-2;0,0" dur="4s" repeatCount="indefinite"/>
+  <ellipse cx="315" cy="252" rx="28" ry="4" fill="url(#reflection)" opacity="0.3">
+    <animate attributeName="ry" values="3;7;3" dur="3s" repeatCount="indefinite" begin="0.5s"/>
   </ellipse>
 
-  <!-- ===== 流水效果（大幅波动 + 横向流动） ===== -->
+  <!-- ===== 流水波浪（大幅摆动） ===== -->
   <g fill="none" stroke-linecap="round">
-
-    <!-- 流水层1：主波形 - 大幅上下摆动 + 横向漂移 -->
-    <path stroke="#5ad8ff" stroke-width="3" opacity="0.65">
+    <!-- 波浪层1 -->
+    <path stroke="#00e8ff" stroke-width="2.5" opacity="0.7">
       <animate attributeName="d" values="
-        M0,475 Q80,455 160,478 Q240,500 320,475 Q400,450 480,478 Q560,505 640,478 Q720,450 800,475;
-        M0,478 Q80,505 160,475 Q240,450 320,478 Q400,505 480,475 Q560,450 640,478 Q720,505 800,478;
-        M0,475 Q80,455 160,478 Q240,500 320,475 Q400,450 480,478 Q560,505 640,478 Q720,450 800,475"
-        dur="3.5s" repeatCount="indefinite"/>
-    </path>
-
-    <!-- 流水层2 - 相位错开，大幅摆动 -->
-    <path stroke="#4ac0ff" stroke-width="2.5" opacity="0.55">
-      <animate attributeName="d" values="
-        M0,490 Q90,510 180,488 Q270,465 360,490 Q450,515 540,488 Q630,462 720,490 Q760,505 800,492;
-        M0,493 Q90,465 180,492 Q270,518 360,493 Q450,465 540,493 Q630,518 720,493 Q760,480 800,493;
-        M0,490 Q90,510 180,488 Q270,465 360,490 Q450,515 540,488 Q630,462 720,490 Q760,505 800,492"
-        dur="4s" repeatCount="indefinite"/>
-    </path>
-
-    <!-- 流水层3 - 密集波形 -->
-    <path stroke="#7ad8ff" stroke-width="2" opacity="0.5">
-      <animate attributeName="d" values="
-        M0,505 Q60,485 120,508 Q180,530 240,505 Q300,480 360,508 Q420,535 480,505 Q540,480 600,508 Q660,535 720,505 Q760,490 800,508;
-        M0,508 Q60,530 120,505 Q180,480 240,508 Q300,535 360,505 Q420,480 480,508 Q540,535 600,505 Q660,480 720,508 Q760,525 800,505;
-        M0,505 Q60,485 120,508 Q180,530 240,505 Q300,480 360,508 Q420,535 480,505 Q540,480 600,508 Q660,535 720,505 Q760,490 800,508"
+        M0,234 Q40,220 80,234 Q120,248 160,234 Q200,220 240,234 Q280,248 320,234 Q360,220 400,234;
+        M0,236 Q40,250 80,236 Q120,222 160,236 Q200,250 240,236 Q280,222 320,236 Q360,250 400,236;
+        M0,234 Q40,220 80,234 Q120,248 160,234 Q200,220 240,234 Q280,248 320,234 Q360,220 400,234"
         dur="3s" repeatCount="indefinite"/>
     </path>
 
-    <!-- 流水层4：底部大浪 -->
-    <path stroke="#3a9acc" stroke-width="3" opacity="0.35">
+    <!-- 波浪层2（相位错开） -->
+    <path stroke="#7affff" stroke-width="2" opacity="0.6">
       <animate attributeName="d" values="
-        M0,535 Q120,515 240,538 Q360,560 480,535 Q600,510 720,538 Q760,550 800,535;
-        M0,538 Q120,560 240,535 Q360,510 480,538 Q600,565 720,535 Q760,520 800,538;
-        M0,535 Q120,515 240,538 Q360,560 480,535 Q600,510 720,538 Q760,550 800,535"
-        dur="5s" repeatCount="indefinite"/>
-    </path>
-
-    <!-- ===== 横向流动线条（模拟水流方向） ===== -->
-    <!-- 流动线1 -->
-    <path d="M-50,478 Q50,470 150,480 Q250,490 350,478" stroke="#7ad8ff" stroke-width="1.5" opacity="0.35" stroke-dasharray="8,12">
-      <animate attributeName="stroke-dashoffset" values="0;-60" dur="1.5s" repeatCount="indefinite"/>
-      <animate attributeName="d" values="
-        M-50,478 Q50,470 150,480 Q250,490 350,478;
-        M-50,480 Q50,473 150,482 Q250,488 350,480;
-        M-50,478 Q50,470 150,480 Q250,490 350,478"
-        dur="3s" repeatCount="indefinite"/>
-    </path>
-
-    <!-- 流动线2 -->
-    <path d="M400,488 Q500,478 600,490 Q700,502 850,488" stroke="#7ad8ff" stroke-width="1.5" opacity="0.35" stroke-dasharray="6,14">
-      <animate attributeName="stroke-dashoffset" values="0;-50" dur="1.8s" repeatCount="indefinite"/>
-      <animate attributeName="d" values="
-        M400,488 Q500,478 600,490 Q700,502 850,488;
-        M400,490 Q500,482 600,492 Q700,500 850,490;
-        M400,488 Q500,478 600,490 Q700,502 850,488"
+        M0,244 Q45,256 90,244 Q135,230 180,244 Q225,258 270,244 Q315,230 360,244 Q380,252 400,244;
+        M0,246 Q45,232 90,246 Q135,260 180,246 Q225,232 270,246 Q315,260 360,246 Q380,238 400,246;
+        M0,244 Q45,256 90,244 Q135,230 180,244 Q225,258 270,244 Q315,230 360,244 Q380,252 400,244"
         dur="3.5s" repeatCount="indefinite"/>
     </path>
 
-    <!-- 流动线3 -->
-    <path d="M-50,510 Q80,498 210,512 Q340,526 470,510" stroke="#8ae0ff" stroke-width="1.2" opacity="0.3" stroke-dasharray="5,10">
-      <animate attributeName="stroke-dashoffset" values="0;-45" dur="1.2s" repeatCount="indefinite"/>
+    <!-- 波浪层3 -->
+    <path stroke="#00c8ff" stroke-width="2" opacity="0.5">
       <animate attributeName="d" values="
-        M-50,510 Q80,498 210,512 Q340,526 470,510;
-        M-50,513 Q80,502 210,515 Q340,524 470,513;
-        M-50,510 Q80,498 210,512 Q340,526 470,510"
-        dur="4s" repeatCount="indefinite"/>
+        M0,254 Q30,246 60,256 Q90,266 120,254 Q150,244 180,256 Q210,266 240,254 Q270,244 300,256 Q330,266 360,254 Q380,248 400,256;
+        M0,256 Q30,266 60,254 Q90,244 120,256 Q150,266 180,254 Q210,244 240,256 Q270,266 300,254 Q330,244 360,256 Q380,262 400,254;
+        M0,254 Q30,246 60,256 Q90,266 120,254 Q150,244 180,256 Q210,266 240,254 Q270,244 300,256 Q330,266 360,254 Q380,248 400,256"
+        dur="2.8s" repeatCount="indefinite"/>
     </path>
 
-    <!-- 流动线4 -->
-    <path d="M350,520 Q480,508 610,522 Q740,536 850,520" stroke="#8ae0ff" stroke-width="1.2" opacity="0.3" stroke-dasharray="7,11">
-      <animate attributeName="stroke-dashoffset" values="0;-54" dur="1.6s" repeatCount="indefinite"/>
+    <!-- 底部暗浪 -->
+    <path stroke="#ff6ae0" stroke-width="2" opacity="0.3">
       <animate attributeName="d" values="
-        M350,520 Q480,508 610,522 Q740,536 850,520;
-        M350,523 Q480,512 610,525 Q740,534 850,523;
-        M350,520 Q480,508 610,522 Q740,536 850,520"
+        M0,264 Q60,256 120,266 Q180,274 240,264 Q300,254 360,266 Q380,270 400,264;
+        M0,266 Q60,274 120,264 Q180,254 240,266 Q300,276 360,264 Q380,260 400,266;
+        M0,264 Q60,256 120,266 Q180,274 240,264 Q300,254 360,266 Q380,270 400,264"
         dur="4.5s" repeatCount="indefinite"/>
     </path>
 
-    <!-- 浪花白沫（波峰高光） -->
-    <path d="M160,472 Q180,466 200,472" stroke="#c0f0ff" stroke-width="1.5" opacity="0.4" fill="none">
-      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="1.8s" repeatCount="indefinite"/>
+    <!-- 横向流动线 -->
+    <path d="M-30,237 Q25,230 80,239 Q135,248 190,237" stroke="#7affff" stroke-width="1.2" opacity="0.4" stroke-dasharray="6,10">
+      <animate attributeName="stroke-dashoffset" values="0;-48" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="d" values="
+        M-30,237 Q25,230 80,239 Q135,248 190,237;
+        M-30,239 Q25,233 80,241 Q135,246 190,239;
+        M-30,237 Q25,230 80,239 Q135,248 190,237"
+        dur="3s" repeatCount="indefinite"/>
     </path>
-    <path d="M320,468 Q340,462 360,468" stroke="#c0f0ff" stroke-width="1.5" opacity="0.4" fill="none">
-      <animate attributeName="opacity" values="0.15;0.45;0.15" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    <path d="M200,247 Q265,238 330,249 Q365,256 430,247" stroke="#7affff" stroke-width="1.2" opacity="0.4" stroke-dasharray="5,9">
+      <animate attributeName="stroke-dashoffset" values="0;-42" dur="1.4s" repeatCount="indefinite"/>
+      <animate attributeName="d" values="
+        M200,247 Q265,238 330,249 Q365,256 430,247;
+        M200,249 Q265,242 330,251 Q365,254 430,249;
+        M200,247 Q265,238 330,249 Q365,256 430,247"
+        dur="3.5s" repeatCount="indefinite"/>
     </path>
-    <path d="M480,472 Q500,465 520,472" stroke="#c0f0ff" stroke-width="1.5" opacity="0.35" fill="none">
-      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.2s" repeatCount="indefinite" begin="1s"/>
+    <path d="M-30,258 Q60,250 150,260 Q240,270 330,258" stroke="#00e8ff" stroke-width="1" opacity="0.35" stroke-dasharray="4,8">
+      <animate attributeName="stroke-dashoffset" values="0;-36" dur="1s" repeatCount="indefinite"/>
     </path>
-    <path d="M640,470 Q660,463 680,470" stroke="#c0f0ff" stroke-width="1.5" opacity="0.35" fill="none">
-      <animate attributeName="opacity" values="0.15;0.4;0.15" dur="1.9s" repeatCount="indefinite" begin="0.8s"/>
+
+    <!-- 浪花白沫 -->
+    <path d="M80,228 Q92,222 104,228" stroke="#c0f0ff" stroke-width="1.2" opacity="0.45" fill="none">
+      <animate attributeName="opacity" values="0.2;0.55;0.2" dur="1.6s" repeatCount="indefinite"/>
+    </path>
+    <path d="M160,226 Q172,220 184,226" stroke="#c0f0ff" stroke-width="1.2" opacity="0.45" fill="none">
+      <animate attributeName="opacity" values="0.15;0.5;0.15" dur="1.8s" repeatCount="indefinite" begin="0.5s"/>
+    </path>
+    <path d="M240,228 Q252,222 264,228" stroke="#c0f0ff" stroke-width="1.2" opacity="0.4" fill="none">
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite" begin="1s"/>
+    </path>
+    <path d="M320,226 Q332,220 344,226" stroke="#c0f0ff" stroke-width="1.2" opacity="0.4" fill="none">
+      <animate attributeName="opacity" values="0.15;0.45;0.15" dur="1.7s" repeatCount="indefinite" begin="0.8s"/>
     </path>
   </g>
 
   <!-- ===== 水纹涟漪 ===== -->
-  <g fill="none" stroke="#7ad8ff" stroke-width="0.8" opacity="0.2">
-    <ellipse cx="300" cy="510" rx="15" ry="4">
-      <animate attributeName="rx" values="5;25;5" dur="4s" repeatCount="indefinite"/>
-      <animate attributeName="ry" values="1;6;1" dur="4s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.4;0;0.4" dur="4s" repeatCount="indefinite"/>
+  <g fill="none" stroke="#7affff" stroke-width="0.7" opacity="0.25">
+    <ellipse cx="120" cy="252" rx="10" ry="3">
+      <animate attributeName="rx" values="3;16;3" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="1;5;1" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0;0.4" dur="3.5s" repeatCount="indefinite"/>
     </ellipse>
-    <ellipse cx="550" cy="530" rx="12" ry="3">
-      <animate attributeName="rx" values="4;20;4" dur="5s" repeatCount="indefinite" begin="2s"/>
-      <animate attributeName="ry" values="1;5;1" dur="5s" repeatCount="indefinite" begin="2s"/>
-      <animate attributeName="opacity" values="0.3;0;0.3" dur="5s" repeatCount="indefinite" begin="2s"/>
+    <ellipse cx="280" cy="260" rx="8" ry="2">
+      <animate attributeName="rx" values="2;13;2" dur="4s" repeatCount="indefinite" begin="2s"/>
+      <animate attributeName="ry" values="1;4;1" dur="4s" repeatCount="indefinite" begin="2s"/>
+      <animate attributeName="opacity" values="0.35;0;0.35" dur="4s" repeatCount="indefinite" begin="2s"/>
     </ellipse>
   </g>
 
   <!-- ===== 水面闪烁星光 ===== -->
-  <g fill="#ffffff" opacity="0.4">
-    <circle cx="150" cy="490" r="1.5">
-      <animate attributeName="opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+  <g fill="#7affff" opacity="0.5">
+    <circle cx="60" cy="246" r="1">
+      <animate attributeName="opacity" values="0;0.9;0" dur="1.8s" repeatCount="indefinite" begin="0.3s"/>
     </circle>
-    <circle cx="350" cy="505" r="1">
-      <animate attributeName="opacity" values="0;0.6;0" dur="2.5s" repeatCount="indefinite" begin="1s"/>
+    <circle cx="200" cy="256" r="0.9">
+      <animate attributeName="opacity" values="0;0.7;0" dur="2.2s" repeatCount="indefinite" begin="0.8s"/>
     </circle>
-    <circle cx="500" cy="495" r="1.5">
-      <animate attributeName="opacity" values="0;0.7;0" dur="3s" repeatCount="indefinite" begin="0.3s"/>
-    </circle>
-    <circle cx="680" cy="510" r="1">
-      <animate attributeName="opacity" values="0;0.5;0" dur="2.8s" repeatCount="indefinite" begin="1.5s"/>
+    <circle cx="350" cy="250" r="1">
+      <animate attributeName="opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite" begin="1.2s"/>
     </circle>
   </g>
 
   <!-- ===== 小舟 ===== -->
-  <g transform="translate(300, 478)">
-    <animateTransform attributeName="transform" type="translate" values="300,478;310,476;300,478" dur="5s" repeatCount="indefinite"/>
-    <!-- 船身 -->
-    <path d="M-20,0 Q-18,6 0,8 Q18,6 20,0 Z" fill="#2a1a0a" opacity="0.7"/>
-    <!-- 船篷 -->
-    <path d="M-8,-2 Q-6,-10 0,-12 Q6,-10 8,-2 Z" fill="#3a2a1a" opacity="0.6"/>
-    <!-- 桅杆 -->
-    <line x1="0" y1="-12" x2="0" y2="-28" stroke="#3a2a1a" stroke-width="0.8" opacity="0.5"/>
-    <!-- 帆 -->
-    <path d="M0,-26 L12,-18 L0,-14 Z" fill="#c8b898" opacity="0.3"/>
+  <g transform="translate(150, 236)">
+    <animateTransform attributeName="transform" type="translate" values="150,236;156,234;150,236" dur="4s" repeatCount="indefinite"/>
+    <path d="M-14,0 Q-12,5 0,6 Q12,5 14,0 Z" fill="#3a1a0a" opacity="0.75"/>
+    <path d="M-6,-1 Q-4,-7 0,-8 Q4,-7 6,-1 Z" fill="#4a2a1a" opacity="0.65"/>
+    <line x1="0" y1="-8" x2="0" y2="-20" stroke="#4a2a1a" stroke-width="0.7" opacity="0.55"/>
+    <path d="M0,-18 L9,-13 L0,-10 Z" fill="#ffe86a" opacity="0.4"/>
   </g>
 
-  <!-- ===== 飘落的花瓣 ===== -->
+  <!-- ===== 飘落花瓣 ===== -->
   <g>
-    <use href="#petal" x="200" y="300">
-      <animateTransform attributeName="transform" type="translate" values="200,300;180,420;160,500" dur="8s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.7;0.4;0" dur="8s" repeatCount="indefinite"/>
+    <use href="#petal" x="100" y="140">
+      <animateTransform attributeName="transform" type="translate" values="100,140;90,190;80,240" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="7s" repeatCount="indefinite"/>
     </use>
-    <use href="#petal" x="450" y="280">
-      <animateTransform attributeName="transform" type="translate" values="450,280;470,400;490,520" dur="10s" repeatCount="indefinite" begin="3s"/>
-      <animate attributeName="opacity" values="0.6;0.3;0" dur="10s" repeatCount="indefinite" begin="3s"/>
+    <use href="#petal" x="220" y="130">
+      <animateTransform attributeName="transform" type="translate" values="220,130;235,180;250,235" dur="8s" repeatCount="indefinite" begin="3s"/>
+      <animate attributeName="opacity" values="0.7;0.35;0" dur="8s" repeatCount="indefinite" begin="3s"/>
     </use>
-    <use href="#petal" x="350" y="350">
-      <animateTransform attributeName="transform" type="translate" values="350,350;330,440;310,530" dur="9s" repeatCount="indefinite" begin="5s"/>
-      <animate attributeName="opacity" values="0.5;0.3;0" dur="9s" repeatCount="indefinite" begin="5s"/>
+    <use href="#petal" x="300" y="160">
+      <animateTransform attributeName="transform" type="translate" values="300,160;290,200;280,245" dur="7.5s" repeatCount="indefinite" begin="5s"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="7.5s" repeatCount="indefinite" begin="5s"/>
     </use>
   </g>
 
   <!-- ===== 萤火虫 ===== -->
   <g>
-    <use href="#firefly" x="150" y="350">
-      <animateTransform attributeName="transform" type="translate" values="150,350;180,330;200,360;170,340;150,350" dur="6s" repeatCount="indefinite"/>
+    <use href="#firefly" x="70" y="165">
+      <animateTransform attributeName="transform" type="translate" values="70,165;85,150;95,175;75,160;70,165" dur="5s" repeatCount="indefinite"/>
     </use>
-    <use href="#firefly" x="500" y="380">
-      <animateTransform attributeName="transform" type="translate" values="500,380;480,360;510,340;530,370;500,380" dur="7s" repeatCount="indefinite" begin="2s"/>
+    <use href="#firefly" x="250" y="180">
+      <animateTransform attributeName="transform" type="translate" values="250,180;240,165;260,150;270,175;250,180" dur="6s" repeatCount="indefinite" begin="2s"/>
     </use>
-    <use href="#firefly" x="650" y="320">
-      <animateTransform attributeName="transform" type="translate" values="650,320;670,300;660,340;640,320;650,320" dur="5s" repeatCount="indefinite" begin="4s"/>
+    <use href="#firefly" x="330" y="150">
+      <animateTransform attributeName="transform" type="translate" values="330,150;345,140;335,160;325,150;330,150" dur="4.5s" repeatCount="indefinite" begin="4s"/>
     </use>
-    <use href="#firefly" x="80" y="400">
-      <animateTransform attributeName="transform" type="translate" values="80,400;100,380;120,410;95,395;80,400" dur="8s" repeatCount="indefinite" begin="1s"/>
+    <use href="#firefly" x="40" y="195">
+      <animateTransform attributeName="transform" type="translate" values="40,195;50,185;60,200;45,190;40,195" dur="5.5s" repeatCount="indefinite" begin="1s"/>
     </use>
   </g>
 
-  <!-- ===== 岸边草丛（左） ===== -->
-  <g fill="#1a3a2a" opacity="0.5">
-    <path d="M0,460 L8,430 L12,460 Z"/>
-    <path d="M15,460 L25,425 L30,460 Z"/>
-    <path d="M35,460 L40,435 L48,460 Z"/>
-    <path d="M50,460 L60,440 L65,460 Z"/>
-    <path d="M65,460 L70,432 L78,460 Z"/>
+  <!-- ===== 岸边草丛 ===== -->
+  <g fill="#1aff8a" opacity="0.35">
+    <path d="M0,228 L5,212 L9,228 Z"/>
+    <path d="M10,228 L16,206 L20,228 Z"/>
+    <path d="M22,228 L26,214 L31,228 Z"/>
   </g>
-
-  <!-- ===== 岸边草丛（右） ===== -->
-  <g fill="#1a3a2a" opacity="0.45">
-    <path d="M720,460 L728,438 L732,460 Z"/>
-    <path d="M735,460 L742,425 L748,460 Z"/>
-    <path d="M750,460 L758,435 L765,460 Z"/>
-    <path d="M768,460 L775,440 L780,460 Z"/>
-  </g>
-
-  <!-- ===== 左下角诗句 ===== -->
-  <g font-family="'SimSun', 'Noto Serif CJK SC', 'Microsoft YaHei', serif" text-anchor="middle" opacity="0.45">
-    <text x="160" y="575" font-size="14" fill="#aac8ff" letter-spacing="3">星 垂 平 野 阔</text>
-    <text x="160" y="592" font-size="12" fill="#8ab0e0" letter-spacing="2">月 涌 大 江 流</text>
-  </g>
-
-  <!-- ===== 右上角印章 ===== -->
-  <g transform="translate(730, 530)" opacity="0.3">
-    <rect x="-25" y="-25" width="50" height="50" rx="3" fill="none" stroke="#cc4444" stroke-width="1.5"/>
-    <text x="0" y="-2" font-family="'SimSun', serif" font-size="16" fill="#cc4444" text-anchor="middle">夜</text>
-    <text x="0" y="15" font-family="'SimSun', serif" font-size="16" fill="#cc4444" text-anchor="middle">泊</text>
+  <g fill="#1aff8a" opacity="0.3">
+    <path d="M360,228 L366,212 L370,228 Z"/>
+    <path d="M372,228 L378,208 L383,228 Z"/>
+    <path d="M385,228 L389,214 L394,228 Z"/>
   </g>
 
   <!-- ===== 流星 ===== -->
   <g opacity="0">
-    <line x1="100" y1="50" x2="200" y2="150" stroke="url(#flowGrad)" stroke-width="1.5">
-      <animate attributeName="opacity" values="0;0.8;0" dur="3s" begin="5s" repeatCount="indefinite"/>
+    <line x1="50" y1="20" x2="110" y2="80" stroke="url(#flowGrad)" stroke-width="1.2">
+      <animate attributeName="opacity" values="0;0.9;0" dur="2.5s" begin="5s" repeatCount="indefinite"/>
     </line>
   </g>
   <g opacity="0">
-    <line x1="400" y1="30" x2="480" y2="110" stroke="url(#flowGrad)" stroke-width="1">
-      <animate attributeName="opacity" values="0;0.6;0" dur="2.5s" begin="10s" repeatCount="indefinite"/>
+    <line x1="200" y1="10" x2="245" y2="55" stroke="url(#flowGrad)" stroke-width="0.9">
+      <animate attributeName="opacity" values="0;0.7;0" dur="2s" begin="9s" repeatCount="indefinite"/>
     </line>
+  </g>
+
+  <!-- ===== 诗句 ===== -->
+  <g font-family="'SimSun', 'Noto Serif CJK SC', 'Microsoft YaHei', serif" text-anchor="middle" opacity="0.55">
+    <text x="70" y="268" font-size="10" fill="#ffe86a" letter-spacing="2">星 垂 平 野 阔</text>
+    <text x="70" y="277" font-size="8.5" fill="#ffb42a" letter-spacing="1.5">月 涌 大 江 流</text>
   </g>
 </svg>
